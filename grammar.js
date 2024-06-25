@@ -1,7 +1,10 @@
+// Constants
+// =========
+
+// Defines the precedence of a few operators.
 const PREC = {
   comment: -1, // solves conflict with the NAT term
   parenthesized_expression: 1,
-
   comparison: 13,
   bitwise_or: 14,
   bitwise_and: 15,
@@ -14,6 +17,9 @@ const PREC = {
 };
 
 const SEMICOLON = ';';
+
+// Grammar
+// =======
 
 module.exports = grammar({
   name: 'bend',
@@ -60,18 +66,51 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($._top_level_defs),
 
+    // Top-level definitions
+    // =====================
     _top_level_defs: $ => choice(
       $._func_def,
       $.object_definition,
       $._type_definition,
     ),
 
-    // Top-level definitions
+    // Function definitions
+    // ====================
 
     _func_def: $ => choice(
       $.imp_function_definition,
       $.fun_function_definition
     ),
+
+    body: $ => seq(
+      $._indent,
+      repeat($._statement),
+      $._dedent,
+    ),
+
+    // imp syntax
+    // ----------
+    imp_function_definition: $ => seq(
+      'def',
+      field('name', $.identifier),
+      field('parameters', $.parameters),
+      ':',
+      $.body,
+    ),
+
+    parameters: $ => seq(
+      '(',
+      optional($._parameters),
+      ')',
+    ),
+
+    _parameters: $ => seq(
+      commaSep1($.identifier),
+      optional(',')
+    ),
+
+    // fun syntax
+    // ----------
 
     fun_function_definition: $ => seq(
       $._function_patterns,
@@ -105,30 +144,8 @@ module.exports = grammar({
       ')'
     ),
 
-    imp_function_definition: $ => seq(
-      'def',
-      field('name', $.identifier),
-      field('parameters', $.parameters),
-      ':',
-      $.body,
-    ),
-
-    parameters: $ => seq(
-      '(',
-      optional($._parameters),
-      ')',
-    ),
-
-    _parameters: $ => seq(
-      commaSep1($.identifier),
-      optional(',')
-    ),
-
-    body: $ => seq(
-      $._indent,
-      repeat($._statement),
-      $._dedent,
-    ),
+    // Object definitions
+    // ==================
 
     object_definition: $ => seq(
       'object',
@@ -145,10 +162,44 @@ module.exports = grammar({
 
     object_field: $ => $.identifier,
 
+    // Type definitions
+    // ================
+
     _type_definition: $ => choice(
       $.imp_type_definition,
       $.fun_type_definition
     ),
+
+    // imp syntax
+    // ----------
+
+    imp_type_definition: $ => seq(
+      'type',
+      field('name', $.identifier),
+      ':',
+      $._imp_type_def_body,
+    ),
+
+    _imp_type_def_body: $ => seq(
+      $._indent,
+      repeat1($.imp_type_constructor),
+      $._dedent,
+    ),
+
+    imp_type_constructor: $ => seq(
+      $.identifier,
+      optional($.imp_type_constructor_field),
+    ),
+
+    imp_type_constructor_field: $ => seq(
+      '{',
+      commaSep1($._type_constructor_field),
+      optional(','),
+      '}'
+    ),
+
+    // fun syntax
+    // ----------
 
     fun_type_definition: $ => seq(
       'type',
@@ -171,36 +222,14 @@ module.exports = grammar({
 
     fun_type_constructor_fields: $ => repeat1($._type_constructor_field),
 
-    imp_type_definition: $ => seq(
-      'type',
-      field('name', $.identifier),
-      ':',
-      $._imp_type_def_body,
-    ),
-
     _type_constructor_field: $ => choice(
-        // TODO: maybe create a node or field for the recursive field?
-        seq('~', $.identifier),
-        $.identifier,
-      ),
-
-    _imp_type_def_body: $ => seq(
-      $._indent,
-      repeat1($.imp_type_constructor),
-      $._dedent,
-    ),
-
-    imp_type_constructor: $ => seq(
+      // TODO: maybe create a node or field for the recursive field?
+      seq('~', $.identifier),
       $.identifier,
-      optional($.imp_type_constructor_field),
     ),
 
-    imp_type_constructor_field: $ => seq(
-      '{',
-      commaSep1($._type_constructor_field),
-      optional(','),
-      '}'
-    ),
+    // Statements
+    // ==========
 
     _statement: $ => choice(
       $._simple_statements,
@@ -208,6 +237,7 @@ module.exports = grammar({
     ),
 
     // Simple statements
+    // -----------------
 
     _simple_statements: $ => seq(
       $._simple_statement,
@@ -262,6 +292,7 @@ module.exports = grammar({
     use_statement: $ => seq('use', alias($.assignment_statement, 'value')),
 
     // Compound statements
+    // -------------------
 
     _compound_statement: $ => choice(
       $.if_statement,
@@ -389,6 +420,7 @@ module.exports = grammar({
     ),
 
     // Terms
+    // =====
 
     _term: $ => seq($._terms, $._newline),
 
@@ -438,10 +470,10 @@ module.exports = grammar({
       $.pattern,
       '=',
       field('value', alias($._terms, $.body)),
-      $.ask_next
+      $._ask_next
     ),
 
-    ask_next: $ => seq(
+    _ask_next: $ => seq(
       optional(SEMICOLON),
       $._terms,
     ),
@@ -647,6 +679,7 @@ module.exports = grammar({
     ),
 
     // Expressions
+    // ===========
 
     expression: $ => choice(
       $.imp_lambda,
@@ -664,6 +697,14 @@ module.exports = grammar({
       $.call_expression,
       $.eraser,
       $.unscoped_var,
+    ),
+
+    imp_lambda: $ => seq(
+      choice('λ', 'lambda'),
+      alias(optionalCommaSep1($.expression), $.parameters),
+      optional(','),
+      ':',
+      field('body', $.expression)
     ),
 
     eraser: $ => seq('*', optional($.parenthesized_expression)),
@@ -689,14 +730,6 @@ module.exports = grammar({
       field('field', $.identifier),
       '=',
       field('value', $.expression)
-    ),
-
-    imp_lambda: $ => seq(
-      choice('λ', 'lambda'),
-      alias(optionalCommaSep1($.expression), $.parameters),
-      optional(','),
-      ':',
-      field('body', $.expression)
     ),
 
     unscoped_var: $ => seq('$', alias($.identifier, 'name')),
@@ -766,8 +799,8 @@ module.exports = grammar({
       $.expression
     ),
 
-
     // Literals
+    // ========
 
     _literals: $ => choice(
       $.integer,
@@ -851,6 +884,9 @@ module.exports = grammar({
       optional(','),
       '}',
     ),
+
+    // Misc
+    // ====
 
     _id: _ => /[a-zA-Z][A-Za-z0-9.-/]*/,
     // Identifier without two consecutive underscores __
