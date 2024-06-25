@@ -16,7 +16,7 @@ After that, you should add this code snippet to your Neovim configuration right 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.bend = {
   install_info = {
-    url = "https://github.com/LaBatata101/tree-sitter-bend",
+    url = "https://github.com/HigherOrderCO/tree-sitter-bend",
     files = { "src/parser.c", "src/scanner.c" },
     branch = "main",
   },
@@ -51,7 +51,7 @@ plugins = {
       local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
       parser_config.bend = {
         install_info = {
-          url = "https://github.com/LaBatata101/tree-sitter-bend",
+          url = "https://github.com/HigherOrderCO/tree-sitter-bend",
           files = { "src/parser.c", "src/scanner.c" },
           branch = "main",
         },

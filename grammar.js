@@ -310,6 +310,7 @@ module.exports = grammar({
       $.body
     ),
 
+    // TODO: multiple binds
     bend_statement: $ => seq(
       'bend',
       $.bind,
@@ -335,6 +336,7 @@ module.exports = grammar({
       ))
     )),
 
+    // TODO: missing `with`
     fold_statement: $ => seq(
       'fold',
       $.match_bind,
@@ -368,6 +370,7 @@ module.exports = grammar({
       '_'
     ),
 
+    // TODO: missing `with`
     match_statement: $ => seq(
       'match',
       $.match_bind,
@@ -470,10 +473,10 @@ module.exports = grammar({
       $.pattern,
       '=',
       field('value', alias($._terms, $.body)),
-      $._ask_next
+      $.ask_next
     ),
 
-    _ask_next: $ => seq(
+    ask_next: $ => seq(
       optional(SEMICOLON),
       $._terms,
     ),

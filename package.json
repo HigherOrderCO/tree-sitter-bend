@@ -1,11 +1,11 @@
 {
   "name": "tree-sitter-bend",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "main": "bindings/node",
   "types": "bindings/node",
-  "author": "LaBatata101",
+  "author": "HigherOrderCO",
   "license": "MIT",
-  "description": "Bend grammar for tree-sitter",
+  "description": "Bend grammar for tree-sitter", 
   "keywords": [
     "parser",
     "bend",
@@ -43,7 +43,7 @@
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip"
   },
-  "repository": "https://github.com/LaBatata101/tree-sitter-bend",
+  "repository": "https://github.com/HigherOrderCO/tree-sitter-bend",
   "tree-sitter": [
     {
       "scope": "source.bend",
