@@ -318,17 +318,17 @@ Bend Term
 ================================================================================
 
 main = bend x = 0 {
-    when (< x 3):
-      (Tree/Node (fork (+ x 1)) (fork (+ x 1)))
-    else:
-      (Tree/Leaf x)
-  }
+  when (< x 3):
+    (Tree/Node (fork (+ x 1)) (fork (+ x 1)))
+  else:
+    (Tree/Leaf x)
+}
 main = bend x = 0, y = 1, z = 2 {
-    when (< x 3):
-      abc
-    else:
-      def
-  }
+  when (< x 3):
+    abc
+  else:
+    def
+}
 --------------------------------------------------------------------------------
 
 (source_file

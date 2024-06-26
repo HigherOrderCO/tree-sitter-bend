@@ -3,9 +3,9 @@ Fun Type Definition
 ================================================================================
 
 type Name
-      = (Ctr1 arg1 arg2)
-      | Ctr2
-      | (abcd)
+  = (Ctr1 arg1 arg2)
+  | Ctr2
+  | (abcd)
 
 type Name2 = (Ctr1 arg1 arg2) | Ctr2 | Ctr3
 
