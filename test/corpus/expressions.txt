@@ -308,19 +308,22 @@ def main():
         (call_expression
           (identifier)
           (arguments
-            (identifier)
-            (integer)
-            (identifier)
-            (binary_op
-              (integer)
-              (integer))
-            (identifier)
-            (call_expression
+            (arg_bind
               (identifier)
-              (arguments
-                (binary_op
-                  (integer)
-                  (integer)))))))
+              (integer))
+            (arg_bind
+              (identifier)
+              (binary_op
+                (integer)
+                (integer)))
+            (arg_bind
+              (identifier)
+              (call_expression
+                (identifier)
+                (arguments
+                  (binary_op
+                    (integer)
+                    (integer))))))))
       (return_statement
         (call_expression
           (identifier)

@@ -64,14 +64,19 @@ def main():
         (identifier)))))
 
 ================================================================================
-Augment Assignment Statement
+In-place operator
 ================================================================================
 
 def main():
-  x += 1;
-  y *= 2 + 2
-  w -= 69
-  z /= 42
+  a += 1;
+  b *= 2 + 2
+  c -= 69
+  d /= 42
+  e &= 2;
+  f |= 3;
+  g ^= 4;
+  h @= String/uppercase
+
 
 --------------------------------------------------------------------------------
 
@@ -80,20 +85,32 @@ def main():
     (identifier)
     (parameters)
     (body
-      (aug_assignment_statement
+      (inplace_op_statement
         (identifier)
         (integer))
-      (aug_assignment_statement
+      (inplace_op_statement
         (identifier)
         (binary_op
           (integer)
           (integer)))
-      (aug_assignment_statement
+      (inplace_op_statement
         (identifier)
         (integer))
-      (aug_assignment_statement
+      (inplace_op_statement
         (identifier)
-        (integer)))))
+        (integer))
+      (inplace_op_statement
+        (identifier)
+        (integer))
+      (inplace_op_statement
+        (identifier)
+        (integer))
+      (inplace_op_statement
+        (identifier)
+        (integer))
+      (inplace_op_statement
+        (identifier)
+        (identifier)))))
 
 ================================================================================
 If Statement
@@ -143,7 +160,7 @@ def main():
               (identifier))))))))
 
 ================================================================================
-Bend Statement
+Bend Statement 1
 ================================================================================
 
 def main():
@@ -163,9 +180,10 @@ def main():
     (parameters)
     (body
       (bend_statement
-        (bind
-          (identifier)
-          (integer))
+        (bend_args
+          (arg_bind
+            (identifier)
+            (integer)))
         (when_clause
           (comparison_op
             (identifier)
@@ -204,7 +222,62 @@ def main():
                   (identifier))))))))))
 
 ================================================================================
-Fold Statement
+Bend Statement 2
+================================================================================
+
+def main():
+  a = 0
+  bend idx = 0, a, b = 0:
+    when idx < 10:
+      sum = idx + fork(idx + 1)
+    else:
+      sum = 0
+  return sum
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (assignment_statement
+        (identifier)
+        (integer))
+      (bend_statement
+        (bend_args
+          (arg_bind
+            (identifier)
+            (integer))
+          (identifier)
+          (arg_bind
+            (identifier)
+            (integer)))
+        (when_clause
+          (comparison_op
+            (identifier)
+            (integer))
+          (body
+            (assignment_statement
+              (identifier)
+              (binary_op
+                (identifier)
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (binary_op
+                      (identifier)
+                      (integer))))))))
+        (else_clause
+          (body
+            (assignment_statement
+              (identifier)
+              (integer)))))
+      (return_statement
+        (identifier)))))
+
+================================================================================
+Fold Statement 1
 ================================================================================
 
 def main():
@@ -222,7 +295,7 @@ def main():
     (parameters)
     (body
       (fold_statement
-        (match_bind
+        (arg_bind
           (identifier)
           (identifier))
         (body
@@ -244,7 +317,81 @@ def main():
                 (integer)))))))))
 
 ================================================================================
-Match Statement
+Fold Statement 2
+================================================================================
+
+def reverse(l):
+  empty = []
+  fold list=l with acc=[], empty:
+    case List/Nil:
+      ret = acc
+    case List/Cons:
+      ret = list.tail(List/Cons(list.head, acc), empty)
+  return ret
+
+def main():
+  return reverse([1,2,3])
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (body
+      (assignment_statement
+        (identifier)
+        (list))
+      (fold_statement
+        (arg_bind
+          (identifier)
+          (identifier))
+        (with_args
+          (arg_bind
+            (identifier)
+            (list))
+          (identifier))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (assignment_statement
+                (identifier)
+                (identifier))))
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (assignment_statement
+                (identifier)
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (call_expression
+                      (identifier)
+                      (arguments
+                        (identifier)
+                        (identifier)))
+                    (identifier))))))))
+      (return_statement
+        (identifier))))
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (list
+              (integer)
+              (integer)
+              (integer))))))))
+
+================================================================================
+Match Statement 1
 ================================================================================
 
 def main():
@@ -262,7 +409,7 @@ def main():
     (parameters)
     (body
       (match_statement
-        (match_bind
+        (arg_bind
           (identifier)
           (identifier))
         (body
@@ -282,11 +429,65 @@ def main():
                 (integer)))))))))
 
 ================================================================================
+Match Statement 2
+================================================================================
+
+def map(g, l):
+  match list=l with f=g:
+    case List/Nil:
+      return []
+    case List/Cons:
+      return List/Cons(f(list.head), map(f, list.tail))
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters
+      (identifier)
+      (identifier))
+    (body
+      (match_statement
+        (arg_bind
+          (identifier)
+          (identifier))
+        (with_args
+          (arg_bind
+            (identifier)
+            (identifier)))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (return_statement
+                (list))))
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (return_statement
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (call_expression
+                      (identifier)
+                      (arguments
+                        (identifier)))
+                    (call_expression
+                      (identifier)
+                      (arguments
+                        (identifier)
+                        (identifier)))))))))))))
+
+================================================================================
 Switch Statement
 ================================================================================
 
 def main():
-  switch x = 5:
+  switch x = 5 with n=0:
+    # comment!
     case 0:
       return 6
     case 1:
@@ -302,10 +503,15 @@ def main():
     (parameters)
     (body
       (switch_statement
-        (match_bind
+        (arg_bind
           (identifier)
           (integer))
+        (with_args
+          (arg_bind
+            (identifier)
+            (integer)))
         (body
+          (comment)
           (switch_case
             (switch_pattern
               (integer))
@@ -325,6 +531,25 @@ def main():
                 (binary_op
                   (identifier)
                   (integer))))))))))
+
+================================================================================
+Match cases
+================================================================================
+
+type Result:
+  Ok  { val }
+  Err { val }
+
+def Result/bind(self, nxt):
+  match self:
+    case Result/Ok:
+      return undefer(nxt, self.val)
+    case Result/Err:
+      return self.val
+
+--------------------------------------------------------------------------------
+
+TODO: fix this!
 
 ================================================================================
 Open Statement

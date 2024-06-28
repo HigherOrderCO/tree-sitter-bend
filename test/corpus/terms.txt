@@ -202,7 +202,7 @@ main = match opt {
     (identifier)
     (body
       (fun_match
-        (match_bind
+        (arg_bind
           (identifier)
           (application
             (identifier)
@@ -220,7 +220,7 @@ main = match opt {
     (identifier)
     (body
       (fun_match
-        (match_bind
+        (arg_bind
           (identifier))
         (body
           (match_case
@@ -251,7 +251,7 @@ main = switch x = (+ 1 1) {
     (identifier)
     (body
       (fun_switch
-        (match_bind
+        (arg_bind
           (identifier))
         (body
           (switch_case
@@ -269,7 +269,7 @@ main = switch x = (+ 1 1) {
     (identifier)
     (body
       (fun_switch
-        (match_bind
+        (arg_bind
           (identifier)
           (num_operator
             (operator)

@@ -248,7 +248,7 @@ module.exports = grammar({
     _simple_statement: $ => choice(
       $.return_statement,
       $.assignment_statement,
-      $.aug_assignment_statement,
+      $.inplace_op_statement,
       $.use_statement,
       $.open_statement,
     ),
@@ -266,27 +266,37 @@ module.exports = grammar({
     ),
 
     assignment_statement: $ => seq(
-      field('pattern', choice(
+      field('pat', $._assignment_pattern),
+      choice('=', '<-'),
+      field('val', $.expression)
+    ),
+
+    _assignment_pattern: $ => seq(
+      choice(
         $.identifier,
         $.unscoped_var,
         $.tuple,
         $.superposition,
         $.eraser,
         '_' // TODO: alias to something?
-      )),
-      choice('=', '<-'),
-      $.expression
+      )
     ),
 
-    aug_assignment_statement: $ => seq(
-      $.identifier,
-      choice(
-        '+=',
-        '-=',
-        '*=',
-        '/=',
-      ),
-      $.expression
+    inplace_op_statement: $ => seq(
+      field('pat', $._assignment_pattern),
+      field('op', $._inplace_op),
+      field('val', $.expression)
+    ),
+
+    _inplace_op: $ => choice(
+      '+=',
+      '-=',
+      '*=',
+      '/=',
+      '&=',
+      '|=',
+      '^=',
+      '@=',
     ),
 
     use_statement: $ => seq('use', alias($.assignment_statement, 'value')),
@@ -310,10 +320,9 @@ module.exports = grammar({
       $.body
     ),
 
-    // TODO: multiple binds
     bend_statement: $ => seq(
       'bend',
-      $.bind,
+      alias($._args, $.bend_args),
       ':',
       $._indent,
       $.when_clause,
@@ -336,20 +345,25 @@ module.exports = grammar({
       ))
     )),
 
-    // TODO: missing `with`
     fold_statement: $ => seq(
       'fold',
-      $.match_bind,
+      $.arg_bind,
+      optional($.with_args),
       ':',
       alias($._match_body, $.body),
     ),
 
-    match_bind: $ => seq(
+    arg_bind: $ => seq(
       choice($.identifier, '_'),
       optional(seq(
         '=',
         $.expression
       ))
+    ),
+
+    with_args: $ => seq(
+      'with',
+      $._args
     ),
 
     _match_body: $ => seq(
@@ -373,14 +387,16 @@ module.exports = grammar({
     // TODO: missing `with`
     match_statement: $ => seq(
       'match',
-      $.match_bind,
+      $.arg_bind,
+      optional($.with_args),
       ':',
       alias($._match_body, $.body),
     ),
 
     switch_statement: $ => seq(
       'switch',
-      $.match_bind,
+      $.arg_bind,
+      optional($.with_args),
       ':',
       alias($._switch_body, $.body),
     ),
@@ -402,7 +418,7 @@ module.exports = grammar({
 
     if_statement: $ => seq(
       'if',
-      field('condition', $.expression),
+      field('cond', $.expression),
       ':',
       $.body,
       repeat($.elif_clause),
@@ -411,7 +427,7 @@ module.exports = grammar({
 
     elif_clause: $ => seq(
       'elif',
-      $.expression,
+      field('cond', $.expression),
       ':',
       $.body,
     ),
@@ -535,7 +551,7 @@ module.exports = grammar({
 
     fun_switch: $ => seq(
       'switch',
-      alias($._fun_match_bind, $.match_bind),
+      alias($._fun_arg_bind, $.arg_bind),
       alias($._fun_switch_body, $.body)
     ),
 
@@ -562,11 +578,11 @@ module.exports = grammar({
 
     fun_match: $ => seq(
       'match',
-      alias($._fun_match_bind, $.match_bind),
+      alias($._fun_arg_bind, $.arg_bind),
       alias($._fun_match_body, $.body),
     ),
 
-    _fun_match_bind: $ => seq(
+    _fun_arg_bind: $ => seq(
       choice($.identifier, '_'),
       optional(seq(
         '=',
@@ -724,12 +740,11 @@ module.exports = grammar({
     ),
 
     _args: $ => seq(
-      commaSep1(choice($._args_with_no_value, $._args_with_value)),
+      commaSep1(choice($.expression, $.arg_bind)),
       optional(',')
     ),
 
-    _args_with_no_value: $ => $.expression,
-    _args_with_value: $ => seq(
+    arg_bind: $ => seq(
       field('field', $.identifier),
       '=',
       field('value', $.expression)
