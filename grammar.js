@@ -11,45 +11,6 @@ const common = require('./grammar/common')
 module.exports = grammar({
   name: 'bend',
 
-  extras: $ => [
-    $.comment,
-    /[\s\f\uFEFF\u2060\u200B]|\r?\n/,
-  ],
-
-  externals: $ => [
-    $._newline,
-    $._indent,
-    $._dedent,
-
-    // Mark comments as external tokens so that the external scanner is always
-    // invoked, even if no external token is expected. This allows for better
-    // error recovery, because the external scanner can maintain the overall
-    // structure by returning dedent tokens whenever a dedent occurs, even
-    // if no dedent is expected.
-    $.comment,
-  ],
-
-  inline: $ => [
-    $._simple_statement,
-    $._compound_statement,
-    $.expression,
-    $.simple_expression,
-  ],
-
-  conflicts: $ => [
-    [$.for_clause],
-    [$.eraser],
-    [$.fun_type_constructor],
-    [$.fun_type_constructor_fields],
-    [$.constructor, $.superposition],
-    [$.imp_lambda, $.constructor],
-    [$._fun_eraser, $.operator],
-    [$._fun_tuple, $.application],
-    [$.pattern_constructor, $._terms],
-  ],
-
-  word: $ => $._id,
-
   rules: {
     source_file: $ => repeat($._top_level_defs),
 
@@ -100,4 +61,43 @@ module.exports = grammar({
       $.fun_type_definition
     ),
   },
+
+  extras: $ => [
+    $.comment,
+    /[\s\f\uFEFF\u2060\u200B]|\r?\n/,
+  ],
+
+  externals: $ => [
+    $._newline,
+    $._indent,
+    $._dedent,
+
+    // Mark comments as external tokens so that the external scanner is always
+    // invoked, even if no external token is expected. This allows for better
+    // error recovery, because the external scanner can maintain the overall
+    // structure by returning dedent tokens whenever a dedent occurs, even
+    // if no dedent is expected.
+    $.comment,
+  ],
+
+  inline: $ => [
+    $._simple_statement,
+    $._compound_statement,
+    $.expression,
+    $.simple_expression,
+  ],
+
+  conflicts: $ => [
+    [$.for_clause],
+    [$.eraser],
+    [$.fun_type_constructor],
+    [$.fun_type_constructor_fields],
+    [$.constructor, $.superposition],
+    [$.imp_lambda, $.constructor],
+    [$._fun_eraser, $.operator],
+    [$._fun_tuple, $.application],
+    [$.pattern_constructor, $._terms],
+  ],
+
+  word: $ => $._id,
 });

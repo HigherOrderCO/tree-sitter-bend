@@ -107,12 +107,159 @@
     }
   },
   {
-    "type": "arguments",
+    "type": "arg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "arg_bind",
+          "named": true
+        },
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_op",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imp_lambda",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "list_comprehension",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "arg_bind",
     "named": true,
     "fields": {
       "field": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "identifier",
@@ -121,8 +268,8 @@
         ]
       },
       "value": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "binary_op",
@@ -206,11 +353,20 @@
           }
         ]
       }
-    },
+    }
+  },
+  {
+    "type": "args",
+    "named": true,
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
+        {
+          "type": "arg_bind",
+          "named": true
+        },
         {
           "type": "binary_op",
           "named": true
@@ -295,10 +451,212 @@
     }
   },
   {
-    "type": "assignment_statement",
+    "type": "arguments",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arg_bind",
+          "named": true
+        },
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_op",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imp_lambda",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "list_comprehension",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ask_next",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ask_statement",
     "named": true,
     "fields": {
-      "pattern": {
+      "pat": {
         "multiple": false,
         "required": true,
         "types": [
@@ -327,184 +685,215 @@
             "named": true
           }
         ]
+      },
+      "val": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_op",
+            "named": true
+          },
+          {
+            "type": "constructor",
+            "named": true
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "imp_lambda",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "list_comprehension",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_op",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_op",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "imp_lambda",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "list_comprehension",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_op",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        }
-      ]
     }
   },
   {
-    "type": "aug_assignment_statement",
+    "type": "assignment_statement",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_op",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_op",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "imp_lambda",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "list_comprehension",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_op",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        }
-      ]
+    "fields": {
+      "pat": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_",
+            "named": false
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
+      },
+      "val": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_op",
+            "named": true
+          },
+          {
+            "type": "constructor",
+            "named": true
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "imp_lambda",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "list_comprehension",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -516,7 +905,7 @@
       "required": true,
       "types": [
         {
-          "type": "bind",
+          "type": "args",
           "named": true
         },
         {
@@ -634,23 +1023,7 @@
           "named": true
         },
         {
-          "type": "binary_op",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
           "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_op",
-          "named": true
-        },
-        {
-          "type": "constructor",
           "named": true
         },
         {
@@ -698,10 +1071,6 @@
           "named": true
         },
         {
-          "type": "imp_lambda",
-          "named": true
-        },
-        {
           "type": "integer",
           "named": true
         },
@@ -714,23 +1083,11 @@
           "named": true
         },
         {
-          "type": "list_comprehension",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
           "type": "nat",
           "named": true
         },
         {
           "type": "num_operator",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
           "named": true
         },
         {
@@ -747,10 +1104,6 @@
         },
         {
           "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_op",
           "named": true
         },
         {
@@ -777,11 +1130,11 @@
           "named": true
         },
         {
-          "type": "assignment_statement",
+          "type": "ask_statement",
           "named": true
         },
         {
-          "type": "aug_assignment_statement",
+          "type": "assignment_statement",
           "named": true
         },
         {
@@ -794,10 +1147,6 @@
         },
         {
           "type": "character",
-          "named": true
-        },
-        {
-          "type": "do_statement",
           "named": true
         },
         {
@@ -850,6 +1199,10 @@
         },
         {
           "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "inplace_op_statement",
           "named": true
         },
         {
@@ -922,6 +1275,10 @@
         },
         {
           "type": "use_statement",
+          "named": true
+        },
+        {
+          "type": "with_statement",
           "named": true
         }
       ]
@@ -1146,114 +1503,102 @@
     }
   },
   {
-    "type": "do_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "body",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "elif_clause",
     "named": true,
-    "fields": {},
+    "fields": {
+      "cond": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_op",
+            "named": true
+          },
+          {
+            "type": "constructor",
+            "named": true
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "imp_lambda",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "list_comprehension",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "binary_op",
-          "named": true
-        },
-        {
           "type": "body",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_op",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "imp_lambda",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "list_comprehension",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_op",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
           "named": true
         }
       ]
@@ -1298,11 +1643,15 @@
       "required": true,
       "types": [
         {
+          "type": "arg",
+          "named": true
+        },
+        {
           "type": "body",
           "named": true
         },
         {
-          "type": "match_bind",
+          "type": "with_args",
           "named": true
         }
       ]
@@ -1440,103 +1789,11 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fun_ask",
-          "named": true
-        },
-        {
-          "type": "fun_bend",
-          "named": true
-        },
-        {
-          "type": "fun_if",
-          "named": true
-        },
-        {
-          "type": "fun_lambda",
-          "named": true
-        },
-        {
-          "type": "fun_match",
-          "named": true
-        },
-        {
-          "type": "fun_open",
-          "named": true
-        },
-        {
-          "type": "fun_switch",
-          "named": true
-        },
-        {
-          "type": "fun_with",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "let_bind",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nat",
-          "named": true
-        },
-        {
-          "type": "num_operator",
+          "type": "ask_next",
           "named": true
         },
         {
           "type": "pattern",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        },
-        {
-          "type": "use",
           "named": true
         }
       ]
@@ -1745,11 +2002,11 @@
       "required": true,
       "types": [
         {
-          "type": "body",
+          "type": "arg",
           "named": true
         },
         {
-          "type": "match_bind",
+          "type": "body",
           "named": true
         }
       ]
@@ -1800,11 +2057,11 @@
       "required": true,
       "types": [
         {
-          "type": "body",
+          "type": "arg",
           "named": true
         },
         {
-          "type": "match_bind",
+          "type": "body",
           "named": true
         }
       ]
@@ -1989,7 +2246,7 @@
     "type": "if_statement",
     "named": true,
     "fields": {
-      "condition": {
+      "cond": {
         "multiple": false,
         "required": true,
         "types": [
@@ -2291,6 +2548,166 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "inplace_op_statement",
+    "named": true,
+    "fields": {
+      "op": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "&=",
+            "named": false
+          },
+          {
+            "type": "*=",
+            "named": false
+          },
+          {
+            "type": "+=",
+            "named": false
+          },
+          {
+            "type": "-=",
+            "named": false
+          },
+          {
+            "type": "/=",
+            "named": false
+          },
+          {
+            "type": "@=",
+            "named": false
+          },
+          {
+            "type": "^=",
+            "named": false
+          },
+          {
+            "type": "|=",
+            "named": false
+          }
+        ]
+      },
+      "pat": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_",
+            "named": false
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
+      },
+      "val": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_op",
+            "named": true
+          },
+          {
+            "type": "constructor",
+            "named": true
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "imp_lambda",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "list_comprehension",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2918,149 +3335,6 @@
     }
   },
   {
-    "type": "match_bind",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "application",
-          "named": true
-        },
-        {
-          "type": "binary_op",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_op",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fun_ask",
-          "named": true
-        },
-        {
-          "type": "fun_bend",
-          "named": true
-        },
-        {
-          "type": "fun_if",
-          "named": true
-        },
-        {
-          "type": "fun_lambda",
-          "named": true
-        },
-        {
-          "type": "fun_match",
-          "named": true
-        },
-        {
-          "type": "fun_open",
-          "named": true
-        },
-        {
-          "type": "fun_switch",
-          "named": true
-        },
-        {
-          "type": "fun_with",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "imp_lambda",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "let_bind",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "list_comprehension",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "nat",
-          "named": true
-        },
-        {
-          "type": "num_operator",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_op",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        },
-        {
-          "type": "use",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "match_case",
     "named": true,
     "fields": {},
@@ -3203,11 +3477,15 @@
       "required": true,
       "types": [
         {
+          "type": "arg",
+          "named": true
+        },
+        {
           "type": "body",
           "named": true
         },
         {
-          "type": "match_bind",
+          "type": "with_args",
           "named": true
         }
       ]
@@ -4102,11 +4380,15 @@
       "required": true,
       "types": [
         {
+          "type": "arg",
+          "named": true
+        },
+        {
           "type": "body",
           "named": true
         },
         {
-          "type": "match_bind",
+          "type": "with_args",
           "named": true
         }
       ]
@@ -4593,7 +4875,7 @@
     "type": "value",
     "named": false,
     "fields": {
-      "pattern": {
+      "pat": {
         "multiple": false,
         "required": true,
         "types": [
@@ -4622,93 +4904,93 @@
             "named": true
           }
         ]
+      },
+      "val": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_op",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "character",
+            "named": true
+          },
+          {
+            "type": "comparison_op",
+            "named": true
+          },
+          {
+            "type": "constructor",
+            "named": true
+          },
+          {
+            "type": "eraser",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "imp_lambda",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "list_comprehension",
+            "named": true
+          },
+          {
+            "type": "map",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "superposition",
+            "named": true
+          },
+          {
+            "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tuple",
+            "named": true
+          },
+          {
+            "type": "unary_op",
+            "named": true
+          },
+          {
+            "type": "unscoped_var",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_op",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "comparison_op",
-          "named": true
-        },
-        {
-          "type": "constructor",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "imp_lambda",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "list_comprehension",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "parenthesized_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unary_op",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -4859,6 +5141,44 @@
     }
   },
   {
+    "type": "with_args",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "arg_bind",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "with_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "!=",
     "named": false
   },
@@ -4876,6 +5196,10 @@
   },
   {
     "type": "&",
+    "named": false
+  },
+  {
+    "type": "&=",
     "named": false
   },
   {
@@ -4959,6 +5283,10 @@
     "named": false
   },
   {
+    "type": "@=",
+    "named": false
+  },
+  {
     "type": "[",
     "named": false
   },
@@ -4968,6 +5296,10 @@
   },
   {
     "type": "^",
+    "named": false
+  },
+  {
+    "type": "^=",
     "named": false
   },
   {
@@ -4996,10 +5328,6 @@
   },
   {
     "type": "def",
-    "named": false
-  },
-  {
-    "type": "do",
     "named": false
   },
   {
@@ -5092,6 +5420,10 @@
   },
   {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "|=",
     "named": false
   },
   {
