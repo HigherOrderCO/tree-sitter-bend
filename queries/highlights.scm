@@ -114,7 +114,7 @@
   "case"
   "open"
   "use"
-  "do"
+  "with"
   "bend"
   "when"
   "fold"

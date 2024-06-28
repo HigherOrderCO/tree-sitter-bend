@@ -19,7 +19,7 @@ def main():
       (assignment_statement
         (identifier)
         (integer))
-      (assignment_statement
+      (ask_statement
         (identifier)
         (integer))
       (assignment_statement
@@ -180,7 +180,7 @@ def main():
     (parameters)
     (body
       (bend_statement
-        (bend_args
+        (args
           (arg_bind
             (identifier)
             (integer)))
@@ -245,7 +245,7 @@ def main():
         (identifier)
         (integer))
       (bend_statement
-        (bend_args
+        (args
           (arg_bind
             (identifier)
             (integer))
@@ -295,9 +295,10 @@ def main():
     (parameters)
     (body
       (fold_statement
-        (arg_bind
-          (identifier)
-          (identifier))
+        (arg
+          (arg_bind
+            (identifier)
+            (identifier)))
         (body
           (match_case
             (match_pattern
@@ -316,8 +317,76 @@ def main():
               (return_statement
                 (integer)))))))))
 
+
 ================================================================================
 Fold Statement 2
+================================================================================
+
+def reverse(list):
+  fold list with acc=[]:
+    case List/Nil:
+      ret = acc
+    case List/Cons:
+      ret = list.tail(List/Cons(list.head, acc))
+  return ret
+
+def main():
+  return reverse([1,2,3])
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters
+      (identifier))
+    (body
+      (fold_statement
+        (arg
+          (identifier))
+        (with_args
+          (arg_bind
+            (identifier)
+            (list)))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (assignment_statement
+                (identifier)
+                (identifier))))
+          (match_case
+            (match_pattern
+              (identifier))
+            (body
+              (assignment_statement
+                (identifier)
+                (call_expression
+                  (identifier)
+                  (arguments
+                    (call_expression
+                      (identifier)
+                      (arguments
+                        (identifier)
+                        (identifier))))))))))
+      (return_statement
+        (identifier))))
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (list
+              (integer)
+              (integer)
+              (integer))))))))
+
+================================================================================
+Fold Statement 3
 ================================================================================
 
 def reverse(l):
@@ -344,9 +413,10 @@ def main():
         (identifier)
         (list))
       (fold_statement
-        (arg_bind
-          (identifier)
-          (identifier))
+        (arg
+          (arg_bind
+            (identifier)
+            (identifier)))
         (with_args
           (arg_bind
             (identifier)
@@ -409,9 +479,10 @@ def main():
     (parameters)
     (body
       (match_statement
-        (arg_bind
-          (identifier)
-          (identifier))
+        (arg
+          (arg_bind
+            (identifier)
+            (identifier)))
         (body
           (match_case
             (match_pattern
@@ -449,9 +520,10 @@ def map(g, l):
       (identifier))
     (body
       (match_statement
-        (arg_bind
-          (identifier)
-          (identifier))
+        (arg
+          (arg_bind
+            (identifier)
+            (identifier)))
         (with_args
           (arg_bind
             (identifier)
@@ -503,9 +575,10 @@ def main():
     (parameters)
     (body
       (switch_statement
-        (arg_bind
-          (identifier)
-          (integer))
+        (arg
+          (arg_bind
+            (identifier)
+            (integer)))
         (with_args
           (arg_bind
             (identifier)
@@ -533,25 +606,6 @@ def main():
                   (integer))))))))))
 
 ================================================================================
-Match cases
-================================================================================
-
-type Result:
-  Ok  { val }
-  Err { val }
-
-def Result/bind(self, nxt):
-  match self:
-    case Result/Ok:
-      return undefer(nxt, self.val)
-    case Result/Err:
-      return self.val
-
---------------------------------------------------------------------------------
-
-TODO: fix this!
-
-================================================================================
 Open Statement
 ================================================================================
 
@@ -574,11 +628,11 @@ def main():
         var: (identifier)))))
 
 ================================================================================
-Do Statement
+With Statement 1
 ================================================================================
 
 def main():
-  do Result:
+  with Result:
     x <- safe_div(2, 0)
     return x
 
@@ -589,10 +643,10 @@ def main():
     (identifier)
     (parameters)
     (body
-      (do_statement
+      (with_statement
         (identifier)
         (body
-          (assignment_statement
+          (ask_statement
             (identifier)
             (call_expression
               (identifier)
@@ -601,3 +655,54 @@ def main():
                 (integer))))
           (return_statement
             (identifier)))))))
+
+================================================================================
+With Statement 2
+================================================================================
+
+def main():
+  with Result:
+    x <- div(3, 2)
+    a = x
+  with Result:
+    y <- div(3, 0)
+    b = y
+  return (a, b)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (with_statement
+        (identifier)
+        (body
+          (ask_statement
+            (identifier)
+            (call_expression
+              (identifier)
+              (arguments
+                (integer)
+                (integer))))
+          (assignment_statement
+            (identifier)
+            (identifier))))
+      (with_statement
+        (identifier)
+        (body
+          (ask_statement
+            (identifier)
+            (call_expression
+              (identifier)
+              (arguments
+                (integer)
+                (integer))))
+          (assignment_statement
+            (identifier)
+            (identifier))))
+      (return_statement
+        (tuple
+          (identifier)
+          (identifier))))))

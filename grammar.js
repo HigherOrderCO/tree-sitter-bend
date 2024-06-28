@@ -248,6 +248,7 @@ module.exports = grammar({
     _simple_statement: $ => choice(
       $.return_statement,
       $.assignment_statement,
+      $.ask_statement,
       $.inplace_op_statement,
       $.use_statement,
       $.open_statement,
@@ -267,7 +268,13 @@ module.exports = grammar({
 
     assignment_statement: $ => seq(
       field('pat', $._assignment_pattern),
-      choice('=', '<-'),
+      choice('='),
+      field('val', $.expression)
+    ),
+
+    ask_statement: $ => seq(
+      field('pat', $._assignment_pattern),
+      choice('<-'),
       field('val', $.expression)
     ),
 
@@ -310,11 +317,11 @@ module.exports = grammar({
       $.fold_statement,
       $.match_statement,
       $.switch_statement,
-      $.do_statement,
+      $.with_statement,
     ),
 
-    do_statement: $ => seq(
-      'do',
+    with_statement: $ => seq(
+      'with',
       $.identifier,
       ':',
       $.body
@@ -322,7 +329,7 @@ module.exports = grammar({
 
     bend_statement: $ => seq(
       'bend',
-      alias($._args, $.bend_args),
+      alias($._args, $.args),
       ':',
       $._indent,
       $.when_clause,
@@ -347,23 +354,15 @@ module.exports = grammar({
 
     fold_statement: $ => seq(
       'fold',
-      $.arg_bind,
+      alias($._arg, $.arg),
       optional($.with_args),
       ':',
       alias($._match_body, $.body),
     ),
 
-    arg_bind: $ => seq(
-      choice($.identifier, '_'),
-      optional(seq(
-        '=',
-        $.expression
-      ))
-    ),
-
     with_args: $ => seq(
       'with',
-      $._args
+      $._args_id
     ),
 
     _match_body: $ => seq(
@@ -384,10 +383,9 @@ module.exports = grammar({
       '_'
     ),
 
-    // TODO: missing `with`
     match_statement: $ => seq(
       'match',
-      $.arg_bind,
+      alias($._arg, $.arg),
       optional($.with_args),
       ':',
       alias($._match_body, $.body),
@@ -395,7 +393,7 @@ module.exports = grammar({
 
     switch_statement: $ => seq(
       'switch',
-      $.arg_bind,
+      alias($._arg, $.arg),
       optional($.with_args),
       ':',
       alias($._switch_body, $.body),
@@ -551,7 +549,7 @@ module.exports = grammar({
 
     fun_switch: $ => seq(
       'switch',
-      alias($._fun_arg_bind, $.arg_bind),
+      alias($._fun_arg_bind, $.arg),
       alias($._fun_switch_body, $.body)
     ),
 
@@ -578,7 +576,7 @@ module.exports = grammar({
 
     fun_match: $ => seq(
       'match',
-      alias($._fun_arg_bind, $.arg_bind),
+      alias($._fun_arg_bind, $.arg),
       alias($._fun_match_body, $.body),
     ),
 
@@ -740,8 +738,23 @@ module.exports = grammar({
     ),
 
     _args: $ => seq(
-      commaSep1(choice($.expression, $.arg_bind)),
+      commaSep1($._arg),
       optional(',')
+    ),
+
+    _args_id: $ => seq(
+      commaSep1($._arg_id),
+      optional(',')
+    ),
+
+    _arg: $ => choice(
+      $.expression,
+      $.arg_bind
+    ),
+
+    _arg_id: $ => choice(
+      choice($.identifier, '_'),
+      $.arg_bind
     ),
 
     arg_bind: $ => seq(
