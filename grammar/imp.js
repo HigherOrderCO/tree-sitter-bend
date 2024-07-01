@@ -140,6 +140,7 @@ module.exports = {
     $.match_statement,
     $.switch_statement,
     $.with_statement,
+    $.local_def_statement
   ),
 
   with_statement: $ => seq(
@@ -256,6 +257,14 @@ module.exports = {
     'else',
     ':',
     $.body,
+  ),
+
+  local_def_statement: $ => seq(
+    'def',
+    field('name', $.identifier),
+    field('parameters', $.parameters),
+    ':',
+    $.body
   ),
 
   // Expressions

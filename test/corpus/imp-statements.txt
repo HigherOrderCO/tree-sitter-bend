@@ -706,3 +706,32 @@ def main():
         (tuple
           (identifier)
           (identifier))))))
+
+================================================================================
+Local definition
+================================================================================
+
+def main():
+  def f(x):
+    return x
+  return f(0)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (local_def_statement
+        (identifier)
+        (parameters
+          (identifier))
+        (body
+          (return_statement
+            (identifier))))
+      (return_statement
+        (call_expression
+          (identifier)
+          (arguments
+            (integer)))))))
