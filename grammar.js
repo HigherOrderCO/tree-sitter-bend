@@ -97,6 +97,7 @@ module.exports = grammar({
     [$._fun_eraser, $.operator],
     [$._fun_tuple, $.application],
     [$.pattern_constructor, $._terms],
+    [$._fun_args]
   ],
 
   word: $ => $._id,

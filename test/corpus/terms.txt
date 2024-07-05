@@ -208,7 +208,7 @@ main = use x = (+ 2 3)
             (identifier)))))))
 
 ================================================================================
-Match Term
+Match Term 1
 ================================================================================
 
 type Opt = (Some val) | None
@@ -284,7 +284,181 @@ main = ((f1 (Opt/Some "hi!")), v2)
         (identifier)))))
 
 ================================================================================
-Match Term
+Match Term 2
+================================================================================
+
+map g l =
+  use b = 0
+  match list=l with f=g, b {
+    List/Nil: []
+    List/Cons: (List/Cons (f list.head) (map f list.tail))
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (identifier))
+    (pattern
+      (identifier))
+    (body
+      (use
+        (identifier)
+        (use_value
+          (integer))
+        (use_next
+          (fun_match
+            (arg
+              (arg_bind
+                (identifier)
+                (identifier)))
+            (with_args
+              (arg_bind
+                (identifier)
+                (identifier))
+              (identifier))
+            (body
+              (match_case
+                (match_pattern
+                  (identifier))
+                (list))
+              (match_case
+                (match_pattern
+                  (identifier))
+                (application
+                  (identifier)
+                  (application
+                    (identifier)
+                    (identifier))
+                  (application
+                    (identifier)
+                    (identifier)
+                    (identifier)))))))))))
+
+================================================================================
+Fold Term 1
+================================================================================
+
+sum_tree tree =
+  fold tree {
+    Tree/Node: (+ tree.left tree.right)
+    Tree/Leaf: tree.value
+  }
+
+main =
+  (sum_tree
+    (Tree/Node
+      (Tree/Node
+        (Tree/Leaf 1)
+        (Tree/Leaf 2))
+      (Tree/Node
+        (Tree/Leaf 3)
+        (Tree/Leaf 4))))
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (identifier))
+    (body
+      (fun_fold
+        (arg
+          (term
+            (identifier)))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (num_operator
+              (operator)
+              (identifier)
+              (identifier)))
+          (match_case
+            (match_pattern
+              (identifier))
+            (identifier))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (application
+        (identifier)
+        (application
+          (identifier)
+          (application
+            (identifier)
+            (application
+              (identifier)
+              (integer))
+            (application
+              (identifier)
+              (integer)))
+          (application
+            (identifier)
+            (application
+              (identifier)
+              (integer))
+            (application
+              (identifier)
+              (integer))))))))
+
+================================================================================
+Fold Term 2
+================================================================================
+
+reverse list =
+  fold list with acc=[] {
+    List/Nil: acc
+    List/Cons: (list.tail (List/Cons list.head acc))
+  }
+
+main = (reverse [1,2,3])
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (identifier))
+    (body
+      (fun_fold
+        (arg
+          (term
+            (identifier)))
+        (with_args
+          (arg_bind
+            (identifier)
+            (list)))
+        (body
+          (match_case
+            (match_pattern
+              (identifier))
+            (identifier))
+          (match_case
+            (match_pattern
+              (identifier))
+            (application
+              (identifier)
+              (application
+                (identifier)
+                (identifier)
+                (identifier))))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (application
+        (identifier)
+        (list
+          (integer)
+          (integer)
+          (integer))))))
+
+================================================================================
+Switch Term 1
 ================================================================================
 
 main = switch n {
@@ -296,6 +470,7 @@ main = switch x = (+ 1 1) {
   0: 42
   _: x-1
 }
+
 --------------------------------------------------------------------------------
 
 (source_file
@@ -341,6 +516,45 @@ main = switch x = (+ 1 1) {
               (integer))))))))
 
 ================================================================================
+Switch Term 2
+================================================================================
+
+main =
+  switch x = 5 with n=2 {
+    0: 0
+    1: 1
+    _: n
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_switch
+        (arg
+          (arg_bind
+            (identifier)
+            (integer)))
+        (with_args
+          (arg_bind
+            (identifier)
+            (integer)))
+        (body
+          (switch_case
+            (switch_pattern
+              (integer))
+            (integer))
+          (switch_case
+            (switch_pattern
+              (integer))
+            (integer))
+          (switch_case
+            (switch_pattern)
+            (identifier)))))))
+
+================================================================================
 If Term
 ================================================================================
 
@@ -369,7 +583,7 @@ main = if (< 1 2) {
             (identifier)))))))
 
 ================================================================================
-Bend Term
+Bend Term 1
 ================================================================================
 
 v1 = bend x = 0 {
@@ -395,9 +609,10 @@ main = (v1, v2)
     (identifier)
     (body
       (fun_bend
-        (bind
-          (identifier)
-          (integer))
+        (args
+          (arg_bind
+            (identifier)
+            (integer)))
         (when_clause
           (num_operator
             (operator)
@@ -427,15 +642,16 @@ main = (v1, v2)
     (identifier)
     (body
       (fun_bend
-        (bind
-          (identifier)
-          (integer))
-        (bind
-          (identifier)
-          (integer))
-        (bind
-          (identifier)
-          (integer))
+        (args
+          (arg_bind
+            (identifier)
+            (integer))
+          (arg_bind
+            (identifier)
+            (integer))
+          (arg_bind
+            (identifier)
+            (integer)))
         (when_clause
           (num_operator
             (operator)
@@ -446,12 +662,65 @@ main = (v1, v2)
         (else_clause
           (body
             (identifier))))))
-      (fun_function_definition
+  (fun_function_definition
+    (identifier)
+    (body
+      (tuple
         (identifier)
-        (body
-          (tuple
-            (identifier)
-            (identifier)))))
+        (identifier)))))
+
+================================================================================
+Bend Term 2
+================================================================================
+
+main =
+  use a = 0
+  bend idx = 0, a, b = 0 {
+    when (< idx 10): (+ idx (fork (+ idx 1) a b))
+    else: 0
+  }
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (use
+        (identifier)
+        (use_value
+          (integer))
+        (use_next
+          (fun_bend
+            (args
+              (arg_bind
+                (identifier)
+                (integer))
+              (term
+                (identifier))
+              (arg_bind
+                (identifier)
+                (integer)))
+            (when_clause
+              (num_operator
+                (operator)
+                (identifier)
+                (integer))
+              (body
+                (num_operator
+                  (operator)
+                  (identifier)
+                  (application
+                    (identifier)
+                    (num_operator
+                      (operator)
+                      (identifier)
+                      (integer))
+                    (identifier)
+                    (identifier)))))
+            (else_clause
+              (body
+                (integer)))))))))
 
 ================================================================================
 Open Term

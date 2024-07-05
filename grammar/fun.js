@@ -92,6 +92,7 @@ module.exports = {
     $.let_bind,
     $.use,
     $.fun_match,
+    $.fun_fold,
     $.fun_switch,
     $.fun_if,
     $.fun_bend,
@@ -138,7 +139,7 @@ module.exports = {
 
   fun_bend: $ => seq(
     'bend',
-    commaSep1(alias($._fun_bend_bind, $.bind)),
+    alias($._fun_args, $.args),
     '{',
     alias($._fun_bend_when, $.when_clause),
     alias($._fun_bend_else, $.else_clause),
@@ -180,9 +181,60 @@ module.exports = {
     '}'
   ),
 
+  _fun_switch_pattern: $ => choice('_', $.integer),
+
+  fun_match: $ => seq(
+    'match',
+    alias($._fun_arg, $.arg),
+    optional(alias($.fun_with_args, $.with_args)),
+    alias($._fun_match_body, $.body),
+  ),
+
+  _fun_match_body: $ => seq(
+    '{',
+    repeat(alias($._fun_match_case, $.match_case)),
+    '}'
+  ),
+
+  _fun_match_case: $ => seq(
+    alias($._fun_match_pattern, $.match_pattern),
+    ':',
+    $._terms,
+    optional(SEMICOLON)
+  ),
+
+  _fun_match_pattern: $ => choice(
+    '_',
+    $.identifier,
+    alias($._fun_eraser, $.eraser)
+  ),
+
+  fun_with_args: $ => seq(
+    'with',
+    $._fun_args_id
+  ),
+
+  _fun_args: $ => seq(
+    commaSep1($._fun_arg),
+    optional(',')
+  ),
+
+  _fun_args_id: $ => seq(
+    commaSep1($._fun_arg_id),
+    optional(',')
+  ),
+
+  fun_fold: $ => seq(
+    'fold',
+    alias($._fun_arg, $.arg),
+    optional(alias($.fun_with_args, $.with_args)),
+    alias($._fun_match_body, $.body),
+  ),
+
   fun_switch: $ => seq(
     'switch',
     alias($._fun_arg, $.arg),
+    optional(alias($.fun_with_args, $.with_args)),
     alias($._fun_switch_body, $.body)
   ),
 
@@ -205,14 +257,6 @@ module.exports = {
     $.integer,
   ),
 
-  _fun_switch_pattern: $ => choice('_', $.integer),
-
-  fun_match: $ => seq(
-    'match',
-    alias($._fun_arg, $.arg),
-    alias($._fun_match_body, $.body),
-  ),
-
   _fun_arg: $ => choice(
     alias($._terms, $.term),
     alias($._fun_arg_bind, $.arg_bind)
@@ -227,25 +271,6 @@ module.exports = {
     field('field', $.identifier),
     '=',
     field('value', $._terms)
-  ),
-
-  _fun_match_body: $ => seq(
-    '{',
-    repeat(alias($._fun_match_case, $.match_case)),
-    '}'
-  ),
-
-  _fun_match_case: $ => seq(
-    alias($._fun_match_pattern, $.match_pattern),
-    ':',
-    $._terms,
-    optional(SEMICOLON)
-  ),
-
-  _fun_match_pattern: $ => choice(
-    '_',
-    $.identifier,
-    alias($._fun_eraser, $.eraser)
   ),
 
   _fun_eraser: _ => '*',
