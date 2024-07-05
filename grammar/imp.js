@@ -152,7 +152,7 @@ module.exports = {
 
   bend_statement: $ => seq(
     'bend',
-    alias($._args, $.args),
+    alias($._imp_args, $.args),
     ':',
     $._indent,
     $.when_clause,
@@ -177,7 +177,7 @@ module.exports = {
 
   fold_statement: $ => seq(
     'fold',
-    alias($._arg, $.arg),
+    alias($._imp_arg, $.arg),
     optional($.with_args),
     ':',
     alias($._match_body, $.body),
@@ -185,7 +185,7 @@ module.exports = {
 
   with_args: $ => seq(
     'with',
-    $._args_id
+    $._imp_args_id
   ),
 
   _match_body: $ => seq(
@@ -208,7 +208,7 @@ module.exports = {
 
   match_statement: $ => seq(
     'match',
-    alias($._arg, $.arg),
+    alias($._imp_arg, $.arg),
     optional($.with_args),
     ':',
     alias($._match_body, $.body),
@@ -216,7 +216,7 @@ module.exports = {
 
   switch_statement: $ => seq(
     'switch',
-    alias($._arg, $.arg),
+    alias($._imp_arg, $.arg),
     optional($.with_args),
     ':',
     alias($._switch_body, $.body),
@@ -305,31 +305,31 @@ module.exports = {
 
   arguments: $ => seq(
     '(',
-    optional($._args),
+    optional($._imp_args),
     ')',
   ),
 
-  _args: $ => seq(
-    commaSep1($._arg),
+  _imp_args: $ => seq(
+    commaSep1($._imp_arg),
     optional(',')
   ),
 
-  _args_id: $ => seq(
-    commaSep1($._arg_id),
+  _imp_args_id: $ => seq(
+    commaSep1($._imp_arg_id),
     optional(',')
   ),
 
-  _arg: $ => choice(
+  _imp_arg: $ => choice(
     $.expression,
-    $.arg_bind
+    alias($._imp_arg_bind, $.arg_bind)
   ),
 
-  _arg_id: $ => choice(
+  _imp_arg_id: $ => choice(
     choice($.identifier, '_'),
-    $.arg_bind
+    alias($._imp_arg_bind, $.arg_bind)
   ),
 
-  arg_bind: $ => seq(
+  _imp_arg_bind: $ => seq(
     field('field', $.identifier),
     '=',
     field('value', $.expression)

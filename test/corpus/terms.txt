@@ -2,15 +2,18 @@
 Let Bindings
 ================================================================================
 
-main = let x = (+ 1 2)
+v1 = let x = (+ 1 2)
 x
-main = let (fst, snd, era) = (1, 2, *);
-(+ fst snd)
-main = let {f1 f2} = λx x;
-(f1 f2)
-main = let $x = (some_fn $x);
-*
 
+v2 = let (fst, snd, era) = (1, 2, *);
+(+ fst snd)
+
+v3 = let {f1 f2} = λx x;
+(f1 f2)
+
+v4 = let $x = (@x x $x); *
+
+main = (v1, v2, v3, v4)
 
 --------------------------------------------------------------------------------
 
@@ -73,20 +76,33 @@ main = let $x = (some_fn $x);
           (unscoped_var))
         (let_value
           (application
-            (identifier)
+            (fun_lambda
+              (pattern
+                (identifier))
+              (body
+                (identifier)))
             (unscoped_var)))
         (let_next
-          (eraser))))))
+          (eraser)))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (tuple
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)))))
 
 ================================================================================
 Fun Lambdas
 ================================================================================
 
-main = λ(fst, snd) snd
-main = λa let (fst, snd) = a; snd
-main = λ{x y} (x y)
-main = λa let {x y} = a; (x y)
-main = λ$x $x
+v1 = λ(fst, snd) snd
+v2 = λa let (fst, snd) = a; snd
+v3 = λ{x y} (x y)
+v4 = λa let {x y} = a; (x y)
+v5 = λ$x $x
+main = (v1, v2, v3, v4, v5)
 
 --------------------------------------------------------------------------------
 
@@ -154,7 +170,16 @@ main = λ$x $x
         (pattern
           (unscoped_var))
         (body
-          (unscoped_var))))))
+          (unscoped_var)))))
+  (fun_function_definition
+        (identifier)
+        (body
+          (tuple
+            (identifier)
+            (identifier)
+            (identifier)
+            (identifier)
+            (identifier)))))
 
 ================================================================================
 Use Term
@@ -186,27 +211,43 @@ main = use x = (+ 2 3)
 Match Term
 ================================================================================
 
-main = match opt = (Some "Bend") {
-  Some: opt.value;
-  None: "No name";
+type Opt = (Some val) | None
+
+f1 opt = match opt = (Opt/Some "Bend") {
+  Opt/Some: opt.val
+  Opt/None: "No name"
 }
-main = match opt {
-  _: 1
-  *: True
+
+v2 = match [] {
+  List/Cons: 1
+  _: 2
 }
+
+main = ((f1 (Opt/Some "hi!")), v2)
 
 --------------------------------------------------------------------------------
 
 (source_file
+  (fun_type_definition
+    (identifier)
+    (fun_type_constructor
+      (identifier)
+      (fun_type_constructor_fields
+        (identifier)))
+    (fun_type_constructor
+      (identifier)))
   (fun_function_definition
     (identifier)
+    (pattern
+      (identifier))
     (body
       (fun_match
         (arg
-          (identifier)
-          (application
+          (arg_bind
             (identifier)
-            (string)))
+            (application
+              (identifier)
+              (string))))
         (body
           (match_case
             (match_pattern
@@ -221,15 +262,26 @@ main = match opt {
     (body
       (fun_match
         (arg
-          (identifier))
+          (term
+            (list)))
         (body
           (match_case
-            (match_pattern)
+            (match_pattern
+              (identifier))
             (integer))
           (match_case
-            (match_pattern
-              (eraser))
-            (identifier)))))))
+            (match_pattern)
+            (integer))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (tuple
+        (application
+          (identifier)
+          (application
+            (identifier)
+            (string)))
+        (identifier)))))
 
 ================================================================================
 Match Term
@@ -252,7 +304,8 @@ main = switch x = (+ 1 1) {
     (body
       (fun_switch
         (arg
-          (identifier))
+          (term
+            (identifier)))
         (body
           (switch_case
             (switch_pattern
@@ -270,11 +323,12 @@ main = switch x = (+ 1 1) {
     (body
       (fun_switch
         (arg
-          (identifier)
-          (num_operator
-            (operator)
-            (integer)
-            (integer)))
+          (arg_bind
+            (identifier)
+            (num_operator
+              (operator)
+              (integer)
+              (integer))))
         (body
           (switch_case
             (switch_pattern
@@ -295,6 +349,7 @@ main = if (< 1 2) {
 } else {
   def
 }
+
 --------------------------------------------------------------------------------
 
 (source_file
@@ -317,18 +372,22 @@ main = if (< 1 2) {
 Bend Term
 ================================================================================
 
-main = bend x = 0 {
+v1 = bend x = 0 {
   when (< x 3):
     (Tree/Node (fork (+ x 1)) (fork (+ x 1)))
   else:
     (Tree/Leaf x)
 }
-main = bend x = 0, y = 1, z = 2 {
+
+v2 = bend x = 0, y = 1, z = 2 {
   when (< x 3):
-    abc
+    y
   else:
-    def
+    z
 }
+
+main = (v1, v2)
+
 --------------------------------------------------------------------------------
 
 (source_file
@@ -386,18 +445,31 @@ main = bend x = 0, y = 1, z = 2 {
             (identifier)))
         (else_clause
           (body
-            (identifier)))))))
+            (identifier))))))
+      (fun_function_definition
+        (identifier)
+        (body
+          (tuple
+            (identifier)
+            (identifier)))))
 
 ================================================================================
 Open Term
 ================================================================================
 
-main = open Pair x;
-(+ x.fst x.snd)
+object Pair { fst, snd }
+
+main = open Pair x; (+ x.fst x.snd)
 
 --------------------------------------------------------------------------------
 
 (source_file
+  (object_definition
+    name: (identifier)
+    field: (object_field
+      (identifier))
+    field: (object_field
+      (identifier)))
   (fun_function_definition
     name: (identifier)
     (body
@@ -411,43 +483,128 @@ main = open Pair x;
             (identifier)))))))
 
 ================================================================================
-Open Term
+With Term
 ================================================================================
 
-Main = with Result {
-  ask y = (div 3 2);
-  ask x = (rem y 0);
-  x
-}
+Result/bind self nxt =
+  match self {
+    Result/Ok: ((undefer nxt) self.val)
+    Reslt/Err: (Result/Err self.val)
+  }
+
+div a b =
+  switch b {
+    0: (Result/Err "Div by 0")
+    _: (Result/Ok (/ a b))
+  }
+
+main =
+  use a = with Result {
+    ask x = (div 3 2)
+    x
+  }
+  use b = with Result {
+    ask y = (div 3 0)
+    y
+  }
+  (a, b)
+
 
 --------------------------------------------------------------------------------
 
 (source_file
   (fun_function_definition
     (identifier)
+    (pattern
+      (identifier))
+    (pattern
+      (identifier))
     (body
-      (fun_with
-        (identifier)
+      (fun_match
+        (arg
+          (term
+            (identifier)))
         (body
-          (fun_ask
-            (pattern
+          (match_case
+            (match_pattern
               (identifier))
-            (body
+            (application
               (application
                 (identifier)
-                (integer)
-                (integer)))
-            (ask_next
+                (identifier))
+              (identifier)))
+          (match_case
+            (match_pattern
+              (identifier))
+            (application
+              (identifier)
+              (identifier)))))))
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (identifier))
+    (pattern
+      (identifier))
+    (body
+      (fun_switch
+        (arg
+          (term
+            (identifier)))
+        (body
+          (switch_case
+            (switch_pattern
+              (integer))
+            (application
+              (identifier)
+              (string)))
+          (switch_case
+            (switch_pattern)
+            (application
+              (identifier)
+              (num_operator
+                (operator)
+                (identifier)
+                (identifier))))))))
+  (fun_function_definition
+    (identifier)
+    (body
+      (use
+        (identifier)
+        (use_value
+          (fun_with
+            (identifier)
+            (body
               (fun_ask
                 (pattern
                   (identifier))
                 (body
                   (application
                     (identifier)
-                    (identifier)
+                    (integer)
                     (integer)))
                 (ask_next
-                  (identifier))))))))))
+                  (identifier))))))
+        (use_next
+          (use
+            (identifier)
+            (use_value
+              (fun_with
+                (identifier)
+                (body
+                  (fun_ask
+                    (pattern
+                      (identifier))
+                    (body
+                      (application
+                        (identifier)
+                        (integer)
+                        (integer)))
+                    (ask_next
+                      (identifier))))))
+            (use_next
+              (tuple
+                (identifier)
+                (identifier)))))))))
 
 ================================================================================
 Nat Term

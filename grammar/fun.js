@@ -182,7 +182,7 @@ module.exports = {
 
   fun_switch: $ => seq(
     'switch',
-    alias($._fun_arg_bind, $.arg),
+    alias($._fun_arg, $.arg),
     alias($._fun_switch_body, $.body)
   ),
 
@@ -209,16 +209,24 @@ module.exports = {
 
   fun_match: $ => seq(
     'match',
-    alias($._fun_arg_bind, $.arg),
+    alias($._fun_arg, $.arg),
     alias($._fun_match_body, $.body),
   ),
 
-  _fun_arg_bind: $ => seq(
+  _fun_arg: $ => choice(
+    alias($._terms, $.term),
+    alias($._fun_arg_bind, $.arg_bind)
+  ),
+
+  _fun_arg_id: $ => choice(
     choice($.identifier, '_'),
-    optional(seq(
-      '=',
-      $._terms,
-    )),
+    alias($._fun_arg_bind, $.arg_bind)
+  ),
+
+  _fun_arg_bind: $ => seq(
+    field('field', $.identifier),
+    '=',
+    field('value', $._terms)
   ),
 
   _fun_match_body: $ => seq(
@@ -251,7 +259,7 @@ module.exports = {
 
   _fun_list: $ => seq(
     '[',
-    commaSep1($._terms),
+    optional(commaSep1($._terms)),
     optional(','),
     ']'
   ),
