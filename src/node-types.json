@@ -32,6 +32,10 @@
           "named": true
         },
         {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
           "type": "fun_if",
           "named": true
         },
@@ -111,13 +115,9 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
-        {
-          "type": "application",
-          "named": true
-        },
         {
           "type": "arg_bind",
           "named": true
@@ -151,38 +151,6 @@
           "named": true
         },
         {
-          "type": "fun_ask",
-          "named": true
-        },
-        {
-          "type": "fun_bend",
-          "named": true
-        },
-        {
-          "type": "fun_if",
-          "named": true
-        },
-        {
-          "type": "fun_lambda",
-          "named": true
-        },
-        {
-          "type": "fun_match",
-          "named": true
-        },
-        {
-          "type": "fun_open",
-          "named": true
-        },
-        {
-          "type": "fun_switch",
-          "named": true
-        },
-        {
-          "type": "fun_with",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
@@ -195,10 +163,6 @@
           "named": true
         },
         {
-          "type": "let_bind",
-          "named": true
-        },
-        {
           "type": "list",
           "named": true
         },
@@ -208,14 +172,6 @@
         },
         {
           "type": "map",
-          "named": true
-        },
-        {
-          "type": "nat",
-          "named": true
-        },
-        {
-          "type": "num_operator",
           "named": true
         },
         {
@@ -235,6 +191,10 @@
           "named": true
         },
         {
+          "type": "term",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -244,10 +204,6 @@
         },
         {
           "type": "unscoped_var",
-          "named": true
-        },
-        {
-          "type": "use",
           "named": true
         }
       ]
@@ -271,6 +227,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "application",
+            "named": true
+          },
           {
             "type": "binary_op",
             "named": true
@@ -300,6 +260,42 @@
             "named": true
           },
           {
+            "type": "fun_ask",
+            "named": true
+          },
+          {
+            "type": "fun_bend",
+            "named": true
+          },
+          {
+            "type": "fun_fold",
+            "named": true
+          },
+          {
+            "type": "fun_if",
+            "named": true
+          },
+          {
+            "type": "fun_lambda",
+            "named": true
+          },
+          {
+            "type": "fun_match",
+            "named": true
+          },
+          {
+            "type": "fun_open",
+            "named": true
+          },
+          {
+            "type": "fun_switch",
+            "named": true
+          },
+          {
+            "type": "fun_with",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -312,6 +308,10 @@
             "named": true
           },
           {
+            "type": "let_bind",
+            "named": true
+          },
+          {
             "type": "list",
             "named": true
           },
@@ -321,6 +321,14 @@
           },
           {
             "type": "map",
+            "named": true
+          },
+          {
+            "type": "nat",
+            "named": true
+          },
+          {
+            "type": "num_operator",
             "named": true
           },
           {
@@ -349,6 +357,10 @@
           },
           {
             "type": "unscoped_var",
+            "named": true
+          },
+          {
+            "type": "use",
             "named": true
           }
         ]
@@ -433,6 +445,10 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "term",
           "named": true
         },
         {
@@ -575,6 +591,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -1011,113 +1031,6 @@
     }
   },
   {
-    "type": "bind",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "application",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fun_ask",
-          "named": true
-        },
-        {
-          "type": "fun_bend",
-          "named": true
-        },
-        {
-          "type": "fun_if",
-          "named": true
-        },
-        {
-          "type": "fun_lambda",
-          "named": true
-        },
-        {
-          "type": "fun_match",
-          "named": true
-        },
-        {
-          "type": "fun_open",
-          "named": true
-        },
-        {
-          "type": "fun_switch",
-          "named": true
-        },
-        {
-          "type": "fun_with",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "let_bind",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nat",
-          "named": true
-        },
-        {
-          "type": "num_operator",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        },
-        {
-          "type": "use",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "body",
     "named": true,
     "fields": {},
@@ -1170,6 +1083,10 @@
           "named": true
         },
         {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
           "type": "fun_if",
           "named": true
         },
@@ -1215,6 +1132,10 @@
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "local_def_statement",
           "named": true
         },
         {
@@ -1808,7 +1729,7 @@
       "required": true,
       "types": [
         {
-          "type": "bind",
+          "type": "args",
           "named": true
         },
         {
@@ -1817,6 +1738,29 @@
         },
         {
           "type": "when_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fun_fold",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arg",
+          "named": true
+        },
+        {
+          "type": "body",
+          "named": true
+        },
+        {
+          "type": "with_args",
           "named": true
         }
       ]
@@ -1882,6 +1826,10 @@
           },
           {
             "type": "fun_bend",
+            "named": true
+          },
+          {
+            "type": "fun_fold",
             "named": true
           },
           {
@@ -2008,6 +1956,10 @@
         {
           "type": "body",
           "named": true
+        },
+        {
+          "type": "with_args",
+          "named": true
         }
       ]
     }
@@ -2062,6 +2014,10 @@
         },
         {
           "type": "body",
+          "named": true
+        },
+        {
+          "type": "with_args",
           "named": true
         }
       ]
@@ -2766,6 +2722,10 @@
           "named": true
         },
         {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
           "type": "fun_if",
           "named": true
         },
@@ -2870,6 +2830,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -2993,6 +2957,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -3197,6 +3165,42 @@
     }
   },
   {
+    "type": "local_def_statement",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parameters",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "map",
     "named": true,
     "fields": {
@@ -3371,6 +3375,10 @@
           "named": true
         },
         {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
           "type": "fun_if",
           "named": true
         },
@@ -3541,6 +3549,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -4113,6 +4125,10 @@
           "named": true
         },
         {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
           "type": "fun_if",
           "named": true
         },
@@ -4241,6 +4257,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -4395,6 +4415,117 @@
     }
   },
   {
+    "type": "term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "application",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "tuple",
     "named": true,
     "fields": {},
@@ -4440,6 +4571,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -4685,6 +4820,10 @@
           "named": true
         },
         {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
           "type": "fun_if",
           "named": true
         },
@@ -4794,6 +4933,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
@@ -5043,6 +5186,10 @@
         },
         {
           "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
           "named": true
         },
         {
