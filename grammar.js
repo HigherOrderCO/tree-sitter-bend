@@ -89,13 +89,13 @@ module.exports = grammar({
 
   conflicts: $ => [
     [$.for_clause],
-    [$.eraser],
+    [$.imp_eraser],
     [$.fun_type_constructor],
     [$.fun_type_constructor_fields],
-    [$.constructor, $.superposition],
-    [$.imp_lambda, $.constructor],
+    [$.imp_constructor, $.imp_superposition],
+    [$.imp_lambda, $.imp_constructor],
     [$._fun_eraser, $.operator],
-    [$._fun_tuple, $.application],
+    [$._fun_tuple, $.fun_application],
     [$.pattern_constructor, $._terms],
     [$._fun_args]
   ],

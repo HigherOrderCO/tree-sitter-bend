@@ -75,22 +75,19 @@ module.exports = {
   _term: $ => seq($._terms, $._newline),
 
   _terms: $ => choice(
+    $._literals,
+    alias($._fun_list, $.list),
+    alias($._fun_tuple, $.tuple),
+    alias($._fun_eraser, $.eraser),
+    alias($._fun_superposition, $.superposition),
     $.num_operator,
     $.identifier,
     $.unscoped_var,
-    $.string,
-    $.character,
-    $.symbol,
-    $.integer,
-    $.float,
-    alias($._fun_eraser, $.eraser),
-    alias($._fun_superposition, $.superposition),
-    alias($._fun_tuple, $.tuple),
-    alias($._fun_list, $.list),
-    $.application,
-    $.fun_lambda,
-    $.let_bind,
     $.use,
+    $.nat,
+    $.let_bind,
+    $.fun_application,
+    $.fun_lambda,
     $.fun_match,
     $.fun_fold,
     $.fun_switch,
@@ -99,7 +96,6 @@ module.exports = {
     $.fun_open,
     $.fun_ask,
     $.fun_with,
-    $.nat,
   ),
 
   nat: $ => seq('#', $.integer),
@@ -321,8 +317,8 @@ module.exports = {
   _let_pattern: $ => choice(
     $.identifier,
     $.unscoped_var,
-    $.tuple,
-    $.superposition
+    alias($.imp_tuple, $.tuple),
+    alias($.imp_superposition, $.superposition)
   ),
 
   fun_lambda: $ => seq(
@@ -331,7 +327,7 @@ module.exports = {
     alias($._terms, $.body),
   ),
 
-  application: $ => seq(
+  fun_application: $ => seq(
     '(',
     repeat1($._terms),
     ')'

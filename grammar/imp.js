@@ -104,9 +104,9 @@ module.exports = {
     choice(
       $.identifier,
       $.unscoped_var,
-      $.tuple,
-      $.superposition,
-      $.eraser,
+      alias($.imp_tuple, $.tuple),
+      alias($.imp_superposition, $.superposition),
+      alias($.imp_eraser, $.eraser),
       '_' // TODO: alias to something?
     )
   ),
@@ -166,14 +166,6 @@ module.exports = {
     ':',
     $.body
   ),
-
-  bind: $ => commaSep1(seq(
-    $.identifier,
-    optional(seq(
-      '=',
-      $.expression,
-    ))
-  )),
 
   fold_statement: $ => seq(
     'fold',
@@ -278,14 +270,66 @@ module.exports = {
   simple_expression: $ => choice(
     $.identifier,
     $._literals,
+    alias($.imp_list, $.list),
+    alias($.imp_tuple, $.tuple),
+    alias($.imp_constructor, $.constructor),
+    alias($.imp_map, $.map),
+    alias($.imp_superposition, $.superposition),
+    alias($.imp_eraser, $.eraser),
     $.list_comprehension,
     $.unary_op,
     $.binary_op,
     $.comparison_op,
     $.parenthesized_expression,
     $.call_expression,
-    $.eraser,
     $.unscoped_var,
+  ),
+
+  imp_list: $ => seq(
+    '[',
+    optional(commaSep1($.expression)),
+    optional(','),
+    ']',
+  ),
+
+  imp_tuple: $ => seq(
+    '(',
+    optional(commaSep1($.expression)),
+    optional(','),
+    ')',
+  ),
+
+  imp_constructor: $ => seq(
+    $.identifier,
+    '{',
+    commaSep1($._cons_pair),
+    '}'
+  ),
+
+  _cons_pair: $ => seq(
+    field('field', $.identifier),
+    ':',
+    field('value', $.expression)
+  ),
+
+  imp_map: $ => seq(
+    '{',
+    optional(commaSep1($._pair)),
+    optional(','),
+    '}',
+  ),
+
+  _pair: $ => seq(
+    field('key', $._literals),
+    ':',
+    field('value', $.expression),
+  ),
+
+  imp_superposition: $ => seq(
+    '{',
+    optionalCommaSep1($.expression),
+    optional(','),
+    '}',
   ),
 
   imp_lambda: $ => seq(
@@ -296,7 +340,7 @@ module.exports = {
     field('body', $.expression)
   ),
 
-  eraser: $ => seq('*', optional($.parenthesized_expression)),
+  imp_eraser: $ => seq('*', optional($.parenthesized_expression)),
 
   call_expression: $ => prec(PREC.call, seq(
     $.identifier,
@@ -334,8 +378,6 @@ module.exports = {
     '=',
     field('value', $.expression)
   ),
-
-  unscoped_var: $ => seq('$', alias($.identifier, 'name')),
 
   parenthesized_expression: $ => prec(PREC.parenthesized_expression, seq(
     '(',

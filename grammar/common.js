@@ -27,6 +27,8 @@ module.exports = {
     optional(',')
   ),
 
+  unscoped_var: $ => seq('$', alias($.identifier, 'name')),
+
   // Literals
   // ========
 
@@ -36,11 +38,6 @@ module.exports = {
     $.character,
     $.string,
     $.symbol,
-    $.list,
-    $.tuple,
-    $.map,
-    $.superposition,
-    $.constructor,
   ),
 
   symbol: _ => token(seq('`', /[a-zA-Z0-9+/]{0,4}/ ,'`')),
@@ -65,51 +62,4 @@ module.exports = {
     const digits = repeat1(/[0-9]+_?/);
     return token(seq(digits, '.', digits));
   },
-
-  list: $ => seq(
-    '[',
-    optional(commaSep1($.expression)),
-    optional(','),
-    ']',
-  ),
-
-  tuple: $ => seq(
-    '(',
-    optional(commaSep1($.expression)),
-    optional(','),
-    ')',
-  ),
-
-  constructor: $ => seq(
-    $.identifier,
-    '{',
-    commaSep1($._cons_pair),
-    '}'
-  ),
-
-  _cons_pair: $ => seq(
-    field('field', $.identifier),
-    ':',
-    field('value', $.expression)
-  ),
-
-  map: $ => seq(
-    '{',
-    optional(commaSep1($._pair)),
-    optional(','),
-    '}',
-  ),
-
-  _pair: $ => seq(
-    field('key', $._literals),
-    ':',
-    field('value', $.expression),
-  ),
-
-  superposition: $ => seq(
-    '{',
-    optionalCommaSep1($.expression),
-    optional(','),
-    '}',
-  ),
 }

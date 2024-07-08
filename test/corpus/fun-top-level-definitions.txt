@@ -100,7 +100,7 @@ MapMaybe (Some val) f = True
     (pattern
       (identifier))
     (body
-      (application
+      (fun_application
         (identifier)
         (identifier)
         (identifier))))

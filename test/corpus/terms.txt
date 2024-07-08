@@ -65,7 +65,7 @@ main = (v1, v2, v3, v4)
             (body
               (identifier))))
         (let_next
-          (application
+          (fun_application
             (identifier)
             (identifier))))))
   (fun_function_definition
@@ -75,7 +75,7 @@ main = (v1, v2, v3, v4)
         (pattern
           (unscoped_var))
         (let_value
-          (application
+          (fun_application
             (fun_lambda
               (pattern
                 (identifier))
@@ -142,7 +142,7 @@ main = (v1, v2, v3, v4, v5)
             (identifier)
             (identifier)))
         (body
-          (application
+          (fun_application
             (identifier)
             (identifier))))))
   (fun_function_definition
@@ -160,7 +160,7 @@ main = (v1, v2, v3, v4, v5)
             (let_value
               (identifier))
             (let_next
-              (application
+              (fun_application
                 (identifier)
                 (identifier))))))))
   (fun_function_definition
@@ -245,7 +245,7 @@ main = ((f1 (Opt/Some "hi!")), v2)
         (arg
           (arg_bind
             (identifier)
-            (application
+            (fun_application
               (identifier)
               (string))))
         (body
@@ -276,9 +276,9 @@ main = ((f1 (Opt/Some "hi!")), v2)
     (identifier)
     (body
       (tuple
-        (application
+        (fun_application
           (identifier)
-          (application
+          (fun_application
             (identifier)
             (string)))
         (identifier)))))
@@ -327,12 +327,12 @@ map g l =
               (match_case
                 (match_pattern
                   (identifier))
-                (application
+                (fun_application
                   (identifier)
-                  (application
+                  (fun_application
                     (identifier)
                     (identifier))
-                  (application
+                  (fun_application
                     (identifier)
                     (identifier)
                     (identifier)))))))))))
@@ -384,24 +384,24 @@ main =
   (fun_function_definition
     (identifier)
     (body
-      (application
+      (fun_application
         (identifier)
-        (application
+        (fun_application
           (identifier)
-          (application
+          (fun_application
             (identifier)
-            (application
+            (fun_application
               (identifier)
               (integer))
-            (application
+            (fun_application
               (identifier)
               (integer)))
-          (application
+          (fun_application
             (identifier)
-            (application
+            (fun_application
               (identifier)
               (integer))
-            (application
+            (fun_application
               (identifier)
               (integer))))))))
 
@@ -441,16 +441,16 @@ main = (reverse [1,2,3])
           (match_case
             (match_pattern
               (identifier))
-            (application
+            (fun_application
               (identifier)
-              (application
+              (fun_application
                 (identifier)
                 (identifier)
                 (identifier))))))))
   (fun_function_definition
     (identifier)
     (body
-      (application
+      (fun_application
         (identifier)
         (list
           (integer)
@@ -619,15 +619,15 @@ main = (v1, v2)
             (identifier)
             (integer))
           (body
-            (application
+            (fun_application
               (identifier)
-              (application
+              (fun_application
                 (identifier)
                 (num_operator
                   (operator)
                   (identifier)
                   (integer)))
-              (application
+              (fun_application
                 (identifier)
                 (num_operator
                   (operator)
@@ -635,7 +635,7 @@ main = (v1, v2)
                   (integer))))))
         (else_clause
           (body
-            (application
+            (fun_application
               (identifier)
               (identifier)))))))
   (fun_function_definition
@@ -710,7 +710,7 @@ main =
                 (num_operator
                   (operator)
                   (identifier)
-                  (application
+                  (fun_application
                     (identifier)
                     (num_operator
                       (operator)
@@ -797,15 +797,15 @@ main =
           (match_case
             (match_pattern
               (identifier))
-            (application
-              (application
+            (fun_application
+              (fun_application
                 (identifier)
                 (identifier))
               (identifier)))
           (match_case
             (match_pattern
               (identifier))
-            (application
+            (fun_application
               (identifier)
               (identifier)))))))
   (fun_function_definition
@@ -823,12 +823,12 @@ main =
           (switch_case
             (switch_pattern
               (integer))
-            (application
+            (fun_application
               (identifier)
               (string)))
           (switch_case
             (switch_pattern)
-            (application
+            (fun_application
               (identifier)
               (num_operator
                 (operator)
@@ -847,7 +847,7 @@ main =
                 (pattern
                   (identifier))
                 (body
-                  (application
+                  (fun_application
                     (identifier)
                     (integer)
                     (integer)))
@@ -864,7 +864,7 @@ main =
                     (pattern
                       (identifier))
                     (body
-                      (application
+                      (fun_application
                         (identifier)
                         (integer)
                         (integer)))
