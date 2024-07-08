@@ -114,3 +114,27 @@ MapMaybe (Some val) f = True
       (identifier))
     (body
       (identifier))))
+
+================================================================================
+Import Definition
+================================================================================
+
+import this
+import ../utils/helper
+
+from that import this
+from ./utils import helper
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_name
+    (os_path))
+  (import_name
+    (os_path))
+  (import_from
+    (os_path)
+    (os_path))
+  (import_from
+    (os_path)
+    (os_path)))

@@ -16,6 +16,8 @@ module.exports = {
 
   comment: _ => token(prec(PREC.comment, seq('#', /.*/))),
 
+  os_path: _ => /[A-Za-z0-9.-\/]+/,
+
   parameters: $ => seq(
     '(',
     optional($._parameters),

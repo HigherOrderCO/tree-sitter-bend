@@ -22,9 +22,30 @@ module.exports = grammar({
     // =====================
 
     _top_level_defs: $ => choice(
+      $._import,
       $._func_def,
       $.object_definition,
       $._type_definition,
+    ),
+
+    // Import definition
+    // =================
+
+    _import: $ => choice(
+      $.import_name,
+      $.import_from
+    ),
+
+    import_name: $ => seq(
+      'import',
+      $.os_path
+    ),
+
+    import_from: $ => seq(
+      'from',
+      $.os_path,
+      'import',
+      $.os_path
     ),
 
     // Function definitions

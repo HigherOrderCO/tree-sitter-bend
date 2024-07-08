@@ -1,5 +1,15 @@
 (identifier) @variable
 
+(import_name
+  "import" @keyword
+  (os_path) @string)
+
+(import_from
+  "from" @keyword
+  (os_path) @string
+  "import" @keyword
+  (os_path) @string)
+
 (fun_function_definition
   name: (identifier) @function)
 (imp_function_definition
