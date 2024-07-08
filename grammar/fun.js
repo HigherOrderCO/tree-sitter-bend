@@ -18,7 +18,10 @@ module.exports = {
     $._function_pattern
   ),
 
-  _function_pattern: $ => seq(field('name', $.identifier), repeat($.pattern)),
+  _function_pattern: $ => seq(
+    field('name', $.identifier),
+    repeat($.pattern)
+  ),
 
   pattern: $ => choice(
     $.integer,
@@ -96,6 +99,7 @@ module.exports = {
     $.fun_open,
     $.fun_ask,
     $.fun_with,
+    $.fun_local_def
   ),
 
   nat: $ => seq('#', $.integer),
@@ -331,6 +335,12 @@ module.exports = {
     '(',
     repeat1($._terms),
     ')'
+  ),
+
+  fun_local_def: $ => seq(
+    'def',
+    repeat1($.fun_function_definition),
+    alias($._terms, $.nxt)
   ),
 
   operator: $ => choice(

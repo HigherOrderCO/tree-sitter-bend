@@ -559,9 +559,9 @@ If Term
 ================================================================================
 
 main = if (< 1 2) {
-  abc
+  a
 } else {
-  def
+  b
 }
 
 --------------------------------------------------------------------------------
@@ -889,3 +889,55 @@ Main = #3
     (body
       (nat
         (integer)))))
+
+================================================================================
+Local Def
+================================================================================
+
+main =
+  let base = 0
+  def aux [] = base
+      aux (List/Cons head tail) = (+ head (aux tail))
+  (aux [1, 2, 3])
+
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (let_bind
+        (pattern
+          (identifier))
+        (let_value
+          (integer))
+        (let_next
+          (fun_local_def
+            (fun_function_definition
+              (identifier)
+              (pattern
+                (list))
+              (body
+                (identifier)))
+            (fun_function_definition
+              (identifier)
+              (pattern
+                (pattern_constructor
+                  (identifier)
+                  (identifier)
+                  (identifier)))
+              (body
+                (num_operator
+                  (operator)
+                  (identifier)
+                  (fun_application
+                    (identifier)
+                    (identifier)))))
+            (nxt
+              (fun_application
+                (identifier)
+                (list
+                  (integer)
+                  (integer)
+                  (integer))))))))))
