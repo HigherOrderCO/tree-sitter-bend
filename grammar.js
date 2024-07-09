@@ -116,8 +116,9 @@ module.exports = grammar({
     [$.imp_constructor, $.imp_superposition],
     [$.imp_lambda, $.imp_constructor],
     [$._fun_eraser, $.operator],
-    [$._fun_tuple, $.fun_application],
-    [$.pattern_constructor, $._terms],
+    [$.imp_tuple, $.arguments],
+    [$.imp_tuple, $._imp_arg],
+    [$.imp_tree_leaf, $.imp_constructor],
     [$._function_pattern, $._terms],
     [$._fun_args]
   ],

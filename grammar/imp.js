@@ -271,6 +271,8 @@ module.exports = {
     $.identifier,
     $._literals,
     alias($.imp_list, $.list),
+    alias($.imp_tree_node, $.tree_node),
+    alias($.imp_tree_leaf, $.tree_leaf),
     alias($.imp_tuple, $.tuple),
     alias($.imp_constructor, $.constructor),
     alias($.imp_map, $.map),
@@ -290,6 +292,19 @@ module.exports = {
     optional(commaSep1($.expression)),
     optional(','),
     ']',
+  ),
+
+  imp_tree_node: $ => seq(
+    '![',
+    $.expression,
+    optional(','),
+    $.expression,
+    ']'
+  ),
+
+  imp_tree_leaf: $ => seq(
+    '!',
+    $.expression
   ),
 
   imp_tuple: $ => seq(

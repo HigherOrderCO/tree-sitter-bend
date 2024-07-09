@@ -80,6 +80,8 @@ module.exports = {
   _terms: $ => choice(
     $._literals,
     alias($._fun_list, $.list),
+    alias($._fun_tree_node, $.tree_node),
+    alias($._fun_tree_leaf, $.tree_leaf),
     alias($._fun_tuple, $.tuple),
     alias($._fun_eraser, $.eraser),
     alias($._fun_superposition, $.superposition),
@@ -289,8 +291,23 @@ module.exports = {
     ']'
   ),
 
+  _fun_tree_node: $ => seq(
+    '![',
+    $._terms,
+    optional(','),
+    $._terms,
+    ']'
+  ),
+
+  _fun_tree_leaf: $ => seq(
+    '!',
+    $._terms,
+  ),
+
   _fun_tuple: $ => seq(
     '(',
+    $._terms,
+    ',',
     commaSep1($._terms),
     optional(','),
     ')'

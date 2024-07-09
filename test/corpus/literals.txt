@@ -182,6 +182,141 @@ def main():
           (symbol))))))
 
 ================================================================================
+Imp Tree 1
+================================================================================
+
+def main():
+  return ![![!1, !2], ![!3, !4]]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (tree_node
+          (tree_node
+            (tree_leaf
+              (integer))
+            (tree_leaf
+              (integer)))
+          (tree_node
+            (tree_leaf
+              (integer))
+            (tree_leaf
+              (integer))))))))
+
+================================================================================
+Imp Tree 2
+================================================================================
+
+def main():
+  x = !![![!1, !2], ![!3, !4]]
+  y = !([])
+  return ![x, y]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (assignment_statement
+        (identifier)
+        (tree_leaf
+          (tree_node
+            (tree_node
+              (tree_leaf
+                (integer))
+              (tree_leaf
+                (integer)))
+            (tree_node
+              (tree_leaf
+                (integer))
+              (tree_leaf
+                (integer))))))
+      (assignment_statement
+        (identifier)
+        (tree_leaf
+          (parenthesized_expression
+            (list))))
+      (return_statement
+        (tree_node
+          (identifier)
+          (identifier))))))
+
+================================================================================
+Fun Tree 1
+================================================================================
+
+main = ![![!1, !2], ![!3, !4]]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (tree_node
+        (tree_node
+          (tree_leaf
+            (integer))
+          (tree_leaf
+            (integer)))
+        (tree_node
+          (tree_leaf
+            (integer))
+          (tree_leaf
+            (integer)))))))
+
+================================================================================
+Fun Tree 2
+================================================================================
+
+main =
+  let x = !![![!1, !2], ![!3, !4]]
+  let y = !([])
+  ![x, y]
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (let_bind
+        (pattern
+          (identifier))
+        (let_value
+          (tree_leaf
+            (tree_node
+              (tree_node
+                (tree_leaf
+                  (integer))
+                (tree_leaf
+                  (integer)))
+              (tree_node
+                (tree_leaf
+                  (integer))
+                (tree_leaf
+                  (integer))))))
+        (let_next
+          (let_bind
+            (pattern
+              (identifier))
+            (let_value
+              (tree_leaf
+                (fun_application
+                  (list))))
+            (let_next
+              (tree_node
+                (identifier)
+                (identifier)))))))))
+
+================================================================================
 Map
 ================================================================================
 
