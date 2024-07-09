@@ -1,116 +1,5 @@
 [
   {
-    "type": "application",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "application",
-          "named": true
-        },
-        {
-          "type": "character",
-          "named": true
-        },
-        {
-          "type": "eraser",
-          "named": true
-        },
-        {
-          "type": "float",
-          "named": true
-        },
-        {
-          "type": "fun_ask",
-          "named": true
-        },
-        {
-          "type": "fun_bend",
-          "named": true
-        },
-        {
-          "type": "fun_fold",
-          "named": true
-        },
-        {
-          "type": "fun_if",
-          "named": true
-        },
-        {
-          "type": "fun_lambda",
-          "named": true
-        },
-        {
-          "type": "fun_match",
-          "named": true
-        },
-        {
-          "type": "fun_open",
-          "named": true
-        },
-        {
-          "type": "fun_switch",
-          "named": true
-        },
-        {
-          "type": "fun_with",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "integer",
-          "named": true
-        },
-        {
-          "type": "let_bind",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "nat",
-          "named": true
-        },
-        {
-          "type": "num_operator",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "superposition",
-          "named": true
-        },
-        {
-          "type": "symbol",
-          "named": true
-        },
-        {
-          "type": "tuple",
-          "named": true
-        },
-        {
-          "type": "unscoped_var",
-          "named": true
-        },
-        {
-          "type": "use",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "arg",
     "named": true,
     "fields": {},
@@ -195,6 +84,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -228,10 +125,6 @@
         "required": true,
         "types": [
           {
-            "type": "application",
-            "named": true
-          },
-          {
             "type": "binary_op",
             "named": true
           },
@@ -260,6 +153,10 @@
             "named": true
           },
           {
+            "type": "fun_application",
+            "named": true
+          },
+          {
             "type": "fun_ask",
             "named": true
           },
@@ -277,6 +174,10 @@
           },
           {
             "type": "fun_lambda",
+            "named": true
+          },
+          {
+            "type": "fun_local_def",
             "named": true
           },
           {
@@ -345,6 +246,14 @@
           },
           {
             "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
             "named": true
           },
           {
@@ -452,6 +361,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -547,6 +464,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -570,10 +495,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -583,6 +504,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -603,6 +528,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -655,6 +584,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -776,6 +713,14 @@
           },
           {
             "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
             "named": true
           },
           {
@@ -901,6 +846,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -1016,6 +969,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -1038,10 +999,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "application",
-          "named": true
-        },
         {
           "type": "ask_statement",
           "named": true
@@ -1075,6 +1032,10 @@
           "named": true
         },
         {
+          "type": "fun_application",
+          "named": true
+        },
+        {
           "type": "fun_ask",
           "named": true
         },
@@ -1092,6 +1053,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -1180,6 +1145,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -1297,6 +1270,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -1395,6 +1376,14 @@
           },
           {
             "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
             "named": true
           },
           {
@@ -1497,6 +1486,14 @@
           },
           {
             "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
             "named": true
           },
           {
@@ -1665,6 +1662,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -1685,6 +1690,129 @@
       "types": [
         {
           "type": "if_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fun_application",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
           "named": true
         }
       ]
@@ -1805,10 +1933,6 @@
         "required": true,
         "types": [
           {
-            "type": "application",
-            "named": true
-          },
-          {
             "type": "character",
             "named": true
           },
@@ -1818,6 +1942,10 @@
           },
           {
             "type": "float",
+            "named": true
+          },
+          {
+            "type": "fun_application",
             "named": true
           },
           {
@@ -1838,6 +1966,10 @@
           },
           {
             "type": "fun_lambda",
+            "named": true
+          },
+          {
+            "type": "fun_local_def",
             "named": true
           },
           {
@@ -1893,6 +2025,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -1936,6 +2076,25 @@
         },
         {
           "type": "pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fun_local_def",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "fun_function_definition",
+          "named": true
+        },
+        {
+          "type": "nxt",
           "named": true
         }
       ]
@@ -2103,6 +2262,32 @@
     }
   },
   {
+    "type": "hvm_definition",
+    "named": true,
+    "fields": {
+      "code": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "hvm_code",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "identifier",
     "named": true,
     "fields": {}
@@ -2181,6 +2366,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -2272,6 +2465,14 @@
           },
           {
             "type": "symbol",
+            "named": true
+          },
+          {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
             "named": true
           },
           {
@@ -2421,6 +2622,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -2501,6 +2710,36 @@
       "types": [
         {
           "type": "imp_type_constructor",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_from",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "os_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_name",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "os_path",
           "named": true
         }
       ]
@@ -2651,6 +2890,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -2698,10 +2945,6 @@
       "required": false,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -2711,6 +2954,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -2731,6 +2978,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -2783,6 +3034,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -2809,10 +3068,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -2822,6 +3077,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -2842,6 +3101,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -2897,6 +3160,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -2919,10 +3190,6 @@
       "multiple": true,
       "required": false,
       "types": [
-        {
-          "type": "application",
-          "named": true
-        },
         {
           "type": "binary_op",
           "named": true
@@ -2952,6 +3219,10 @@
           "named": true
         },
         {
+          "type": "fun_application",
+          "named": true
+        },
+        {
           "type": "fun_ask",
           "named": true
         },
@@ -2969,6 +3240,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -3037,6 +3312,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -3135,6 +3418,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -3213,10 +3504,6 @@
             "named": true
           },
           {
-            "type": "constructor",
-            "named": true
-          },
-          {
             "type": "float",
             "named": true
           },
@@ -3225,27 +3512,11 @@
             "named": true
           },
           {
-            "type": "list",
-            "named": true
-          },
-          {
-            "type": "map",
-            "named": true
-          },
-          {
             "type": "string",
             "named": true
           },
           {
-            "type": "superposition",
-            "named": true
-          },
-          {
             "type": "symbol",
-            "named": true
-          },
-          {
-            "type": "tuple",
             "named": true
           }
         ]
@@ -3323,6 +3594,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -3347,10 +3626,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "body",
           "named": true
         },
@@ -3364,6 +3639,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -3384,6 +3663,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -3440,6 +3723,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -3528,10 +3819,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -3541,6 +3828,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -3561,6 +3852,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -3617,6 +3912,137 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nxt",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -3783,6 +4209,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -3871,6 +4305,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -4031,6 +4473,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -4062,11 +4512,23 @@
           "named": true
         },
         {
+          "type": "hvm_definition",
+          "named": true
+        },
+        {
           "type": "imp_function_definition",
           "named": true
         },
         {
           "type": "imp_type_definition",
+          "named": true
+        },
+        {
+          "type": "import_from",
+          "named": true
+        },
+        {
+          "type": "import_name",
           "named": true
         },
         {
@@ -4084,10 +4546,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "application",
-          "named": true
-        },
         {
           "type": "binary_op",
           "named": true
@@ -4117,6 +4575,10 @@
           "named": true
         },
         {
+          "type": "fun_application",
+          "named": true
+        },
+        {
           "type": "fun_ask",
           "named": true
         },
@@ -4134,6 +4596,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -4205,6 +4671,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -4232,10 +4706,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "body",
           "named": true
         },
@@ -4249,6 +4719,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -4269,6 +4743,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -4329,6 +4807,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -4423,10 +4909,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -4436,6 +4918,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -4456,6 +4942,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -4511,6 +5001,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -4526,17 +5024,13 @@
     }
   },
   {
-    "type": "tuple",
+    "type": "tree_leaf",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
-        {
-          "type": "application",
-          "named": true
-        },
         {
           "type": "binary_op",
           "named": true
@@ -4566,6 +5060,10 @@
           "named": true
         },
         {
+          "type": "fun_application",
+          "named": true
+        },
+        {
           "type": "fun_ask",
           "named": true
         },
@@ -4583,6 +5081,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -4651,6 +5153,332 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tree_node",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_op",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imp_lambda",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "list_comprehension",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
+          "type": "tuple",
+          "named": true
+        },
+        {
+          "type": "unary_op",
+          "named": true
+        },
+        {
+          "type": "unscoped_var",
+          "named": true
+        },
+        {
+          "type": "use",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_op",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "character",
+          "named": true
+        },
+        {
+          "type": "comparison_op",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "eraser",
+          "named": true
+        },
+        {
+          "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
+          "named": true
+        },
+        {
+          "type": "fun_ask",
+          "named": true
+        },
+        {
+          "type": "fun_bend",
+          "named": true
+        },
+        {
+          "type": "fun_fold",
+          "named": true
+        },
+        {
+          "type": "fun_if",
+          "named": true
+        },
+        {
+          "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
+          "named": true
+        },
+        {
+          "type": "fun_match",
+          "named": true
+        },
+        {
+          "type": "fun_open",
+          "named": true
+        },
+        {
+          "type": "fun_switch",
+          "named": true
+        },
+        {
+          "type": "fun_with",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "imp_lambda",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "let_bind",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "list_comprehension",
+          "named": true
+        },
+        {
+          "type": "map",
+          "named": true
+        },
+        {
+          "type": "nat",
+          "named": true
+        },
+        {
+          "type": "num_operator",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "superposition",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -4745,6 +5573,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -4796,10 +5632,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -4809,6 +5641,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -4829,6 +5665,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -4881,6 +5721,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -4912,10 +5760,6 @@
       "required": true,
       "types": [
         {
-          "type": "application",
-          "named": true
-        },
-        {
           "type": "character",
           "named": true
         },
@@ -4925,6 +5769,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "fun_application",
           "named": true
         },
         {
@@ -4945,6 +5793,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -4997,6 +5849,14 @@
         },
         {
           "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
           "named": true
         },
         {
@@ -5121,6 +5981,14 @@
             "named": true
           },
           {
+            "type": "tree_leaf",
+            "named": true
+          },
+          {
+            "type": "tree_node",
+            "named": true
+          },
+          {
             "type": "tuple",
             "named": true
           },
@@ -5144,10 +6012,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "application",
-          "named": true
-        },
         {
           "type": "binary_op",
           "named": true
@@ -5181,6 +6045,10 @@
           "named": true
         },
         {
+          "type": "fun_application",
+          "named": true
+        },
+        {
           "type": "fun_ask",
           "named": true
         },
@@ -5198,6 +6066,10 @@
         },
         {
           "type": "fun_lambda",
+          "named": true
+        },
+        {
+          "type": "fun_local_def",
           "named": true
         },
         {
@@ -5269,6 +6141,14 @@
           "named": true
         },
         {
+          "type": "tree_leaf",
+          "named": true
+        },
+        {
+          "type": "tree_node",
+          "named": true
+        },
+        {
           "type": "tuple",
           "named": true
         },
@@ -5326,7 +6206,15 @@
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
     "type": "!=",
+    "named": false
+  },
+  {
+    "type": "![",
     "named": false
   },
   {
@@ -5498,7 +6386,23 @@
     "named": false
   },
   {
+    "type": "from",
+    "named": false
+  },
+  {
+    "type": "hvm",
+    "named": false
+  },
+  {
+    "type": "hvm_code",
+    "named": true
+  },
+  {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "import",
     "named": false
   },
   {
@@ -5528,6 +6432,10 @@
   {
     "type": "open",
     "named": false
+  },
+  {
+    "type": "os_path",
+    "named": true
   },
   {
     "type": "return",
