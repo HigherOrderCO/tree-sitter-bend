@@ -18,6 +18,9 @@ module.exports = {
 
   os_path: _ => /[A-Za-z0-9.-\/]+/,
 
+  // TODO: Parse HVM code
+  hvm_code: _ => /.*\n/,
+
   parameters: $ => seq(
     '(',
     optional($._parameters),

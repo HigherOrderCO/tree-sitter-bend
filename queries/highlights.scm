@@ -35,6 +35,11 @@
 (fun_type_constructor_fields
   (identifier) @variable.member)
 
+(hvm_definition
+  name: (identifier) @function)
+(hvm_definition
+  code: (hvm_code) @string)
+
 (constructor
   (identifier) @constructor)
 (constructor
@@ -108,6 +113,7 @@
   "@"
   "λ"
   "lambda"
+  "hvm"
 ] @keyword.function
 
 "return" @keyword.return

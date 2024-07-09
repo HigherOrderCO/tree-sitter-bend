@@ -26,6 +26,7 @@ module.exports = grammar({
       $._func_def,
       $.object_definition,
       $._type_definition,
+      $.hvm_definition
     ),
 
     // Import definition
@@ -80,6 +81,18 @@ module.exports = grammar({
     _type_definition: $ => choice(
       $.imp_type_definition,
       $.fun_type_definition
+    ),
+
+    // HVM defintions
+    // ==============
+
+    hvm_definition: $ => seq(
+      'hvm',
+      field('name', $.identifier),
+      ':',
+      $._newline,
+      field('code', $.hvm_code),
+      $._newline
     ),
   },
 

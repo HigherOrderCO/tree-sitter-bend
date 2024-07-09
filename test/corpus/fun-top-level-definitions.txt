@@ -138,3 +138,63 @@ from ./utils import helper
   (import_from
     (os_path)
     (os_path)))
+
+================================================================================
+HVM Definition
+================================================================================
+
+# log(x: f24, base: f24) -> f24
+# Computes the logarithm of `x` with the specified `base`.
+hvm log:
+  (x ($([|] $(x ret)) ret))
+
+# atan2(x: f24, y: f24) -> f24
+# Has the same behaviour as `atan2f` in the C math lib.
+# Computes the arctangent of the quotient of its two arguments.
+hvm atan2:
+  ($([&] $(y ret)) (y ret))
+
+# to_f24(x: native number) -> f24
+# Casts any native number to an f24.
+hvm to_f24:
+  ($([f24] ret) ret)
+
+# to_u24(x: native number) -> u24
+# Casts any native number to a u24.
+hvm to_u24:
+  ($([u24] ret) ret)
+
+# to_i24(x: native number) -> i24
+# Casts any native number to an i24.
+hvm to_i24:
+  ($([i24] ret) ret)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (hvm_definition
+    (identifier)
+    (hvm_code))
+  (comment)
+  (comment)
+  (comment)
+  (hvm_definition
+    (identifier)
+    (hvm_code))
+  (comment)
+  (comment)
+  (hvm_definition
+    (identifier)
+    (hvm_code))
+  (comment)
+  (comment)
+  (hvm_definition
+    (identifier)
+    (hvm_code))
+  (comment)
+  (comment)
+  (hvm_definition
+    (identifier)
+    (hvm_code)))
