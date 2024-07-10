@@ -2266,7 +2266,7 @@
     "named": true,
     "fields": {
       "code": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {

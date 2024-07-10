@@ -4441,16 +4441,23 @@
           "name": "_newline"
         },
         {
-          "type": "FIELD",
-          "name": "code",
+          "type": "SYMBOL",
+          "name": "_indent"
+        },
+        {
+          "type": "REPEAT1",
           "content": {
-            "type": "SYMBOL",
-            "name": "hvm_code"
+            "type": "FIELD",
+            "name": "code",
+            "content": {
+              "type": "SYMBOL",
+              "name": "hvm_code"
+            }
           }
         },
         {
           "type": "SYMBOL",
-          "name": "_newline"
+          "name": "_dedent"
         }
       ]
     }
