@@ -10,7 +10,7 @@ module.exports = {
   imp_function_definition: $ => seq(
     'def',
     field('name', $.identifier),
-    field('parameters', $.parameters),
+    optional(field('parameters', $.parameters)),
     ':',
     $.body,
   ),
