@@ -326,11 +326,12 @@ def main():
                     (integer))))))))
       (return_statement
         (call_expression
-          (identifier)
+          (identifier
+            (path)
+            (identifier))
           (arguments
             (integer)
             (integer)))))))
-
 
 ================================================================================
 Eraser Expression

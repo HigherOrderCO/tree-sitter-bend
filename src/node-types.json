@@ -1,5 +1,10 @@
 [
   {
+    "type": "_id",
+    "named": true,
+    "subtypes": []
+  },
+  {
     "type": "arg",
     "named": true,
     "fields": {},
@@ -2290,7 +2295,32 @@
   {
     "type": "identifier",
     "named": true,
-    "fields": {}
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_id",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "if_clause",
@@ -3793,7 +3823,32 @@
   {
     "type": "name",
     "named": false,
-    "fields": {}
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_id",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "path",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "nat",
@@ -4325,6 +4380,29 @@
         },
         {
           "type": "unscoped_var",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_id",
+          "named": true
+        },
+        {
+          "type": "part",
+          "named": true
+        },
+        {
+          "type": "path",
           "named": true
         }
       ]

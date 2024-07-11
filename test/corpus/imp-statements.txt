@@ -110,7 +110,9 @@ def main():
         (integer))
       (inplace_op_statement
         (identifier)
-        (identifier)))))
+        (identifier
+          (path)
+          (identifier))))))
 
 ================================================================================
 If Statement
@@ -601,9 +603,7 @@ def main():
             (switch_pattern)
             (body
               (return_statement
-                (binary_op
-                  (identifier)
-                  (integer))))))))))
+                (identifier)))))))))
 
 ================================================================================
 Open Statement

@@ -511,9 +511,7 @@ main = switch x = (+ 1 1) {
             (integer))
           (switch_case
             (switch_pattern)
-            (switch_predecessor
-              (identifier)
-              (integer))))))))
+            (identifier)))))))
 
 ================================================================================
 Switch Term 2
@@ -897,7 +895,7 @@ Local Def
 main =
   let base = 0
   def aux [] = base
-      aux (List/Cons head tail) = (+ head (aux tail))
+      aux (List/Cons/ble head tail) = (+ head (aux tail))
   (aux [1, 2, 3])
 
 

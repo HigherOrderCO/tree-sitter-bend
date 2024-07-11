@@ -124,6 +124,7 @@ module.exports = grammar({
   ],
 
   conflicts: $ => [
+    [$.identifier, $.path],
     [$.for_clause],
     [$.imp_eraser],
     [$.fun_type_constructor],
@@ -138,5 +139,7 @@ module.exports = grammar({
     [$._fun_args]
   ],
 
-  word: $ => $._id,
+  word: $ => $._normal_identifier,
+
+  supertypes: $ => [$._id],
 });

@@ -135,7 +135,7 @@ module.exports = {
     'open',
     field('type', $.identifier),
     field('variable', $.identifier),
-    SEMICOLON,
+    optional(SEMICOLON),
     alias($._terms, $.body)
     ),
 
