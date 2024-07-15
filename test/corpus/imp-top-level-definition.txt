@@ -32,7 +32,9 @@ def IO/MAGIC:
 (source_file
   (comment)
   (imp_function_definition
-    (identifier)
+    (identifier
+      (path)
+      (identifier))
     (body
       (return_statement
         (tuple

@@ -8,30 +8,20 @@ module.exports = {
   // ====
 
   _normal_identifier: _ => /[a-zA-Z][A-Za-z0-9_\-.]*/,
-  // _id: _ => /[a-zA-Z][A-Za-z0-9_\-.\/]*/,
 
   // Identifier without two consecutive underscores __
   _top_level_identifier: _ => /[a-zA-Z][A-Za-z0-9_\-.]*(?:_[A-Za-z0-9_\-.]+)*/,
-  // _top_level_identifier: _ => /[a-zA-Z][A-Za-z0-9_\-.\/]*(?:_[A-Za-z0-9_\-.\/]+)*/,
 
   _id: $ => choice($._normal_identifier, $._top_level_identifier),
 
   identifier: $ => prec(PREC.call, choice(
     seq(
-      $.path,
-      '/',
+      // `$.path` is an external symbol, it's the same as an identifier
+      // but it must contain a slash '/' in its last lookahead
+      repeat1(seq($.path, '/')),
       field('name', alias($._id, $.identifier))
     ),
     field('name', $._id)
-  )),
-
-  path: $ => prec(PREC.call, choice(
-    seq(
-      $.path,
-      '/',
-      alias($._id, $.part)
-    ),
-    $._id
   )),
 
   comment: _ => token(prec(PREC.comment, seq('#', /.*/))),
