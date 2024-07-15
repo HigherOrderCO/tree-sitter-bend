@@ -114,7 +114,7 @@ module.exports = {
 
   _fun_with_body: $ => seq(
     '{',
-    $.fun_ask,
+    $._terms,
     '}'
   ),
 

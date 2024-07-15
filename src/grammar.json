@@ -2990,7 +2990,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "fun_ask"
+          "name": "_terms"
         },
         {
           "type": "STRING",
