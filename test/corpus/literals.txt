@@ -409,7 +409,9 @@ def main():
     (body
       (return_statement
         (constructor
-          (identifier)
+          (identifier
+            (path)
+            (identifier))
           (identifier)
           (integer)
           (identifier)

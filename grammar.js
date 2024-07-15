@@ -14,9 +14,9 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($._top_level_defs),
 
+    ...common, // Common rules between syntaxes
     ...imp, // Imperative-like syntax
     ...fun, // Functional-like syntax
-    ...common, // Common rules between syntaxes
 
     // Top-level definitions
     // =====================
@@ -114,6 +114,11 @@ module.exports = grammar({
     // structure by returning dedent tokens whenever a dedent occurs, even
     // if no dedent is expected.
     $.comment,
+
+    // Normal identifiers with a slash '/' after their last character.
+    $.path,
+
+    $.error_sentinel
   ],
 
   inline: $ => [
@@ -138,5 +143,7 @@ module.exports = grammar({
     [$._fun_args]
   ],
 
-  word: $ => $._id,
+  word: $ => $._normal_identifier,
+
+  supertypes: $ => [$._id],
 });

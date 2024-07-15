@@ -110,7 +110,9 @@ def main():
         (integer))
       (inplace_op_statement
         (identifier)
-        (identifier)))))
+        (identifier
+          (path)
+          (identifier))))))
 
 ================================================================================
 If Statement
@@ -208,7 +210,9 @@ def main():
             (assignment_statement
               (identifier)
               (call_expression
-                (identifier)
+                (identifier
+                  (path)
+                  (identifier))
                 (arguments
                   (identifier)
                   (identifier))))))
@@ -217,7 +221,9 @@ def main():
             (assignment_statement
               (identifier)
               (call_expression
-                (identifier)
+                (identifier
+                  (path)
+                  (identifier))
                 (arguments
                   (identifier))))))))))
 
@@ -298,11 +304,15 @@ def main():
         (arg
           (arg_bind
             (identifier)
-            (identifier)))
+            (identifier
+              (path)
+              (identifier))))
         (body
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (return_statement
                 (binary_op
@@ -312,7 +322,9 @@ def main():
                   (identifier)))))
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (return_statement
                 (integer)))))))))
@@ -351,14 +363,18 @@ def main():
         (body
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (assignment_statement
                 (identifier)
                 (identifier))))
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (assignment_statement
                 (identifier)
@@ -366,7 +382,9 @@ def main():
                   (identifier)
                   (arguments
                     (call_expression
-                      (identifier)
+                      (identifier
+                        (path)
+                        (identifier))
                       (arguments
                         (identifier)
                         (identifier))))))))))
@@ -425,14 +443,18 @@ def main():
         (body
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (assignment_statement
                 (identifier)
                 (identifier))))
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (assignment_statement
                 (identifier)
@@ -440,7 +462,9 @@ def main():
                   (identifier)
                   (arguments
                     (call_expression
-                      (identifier)
+                      (identifier
+                        (path)
+                        (identifier))
                       (arguments
                         (identifier)
                         (identifier)))
@@ -465,10 +489,10 @@ Match Statement 1
 ================================================================================
 
 def main():
-  match x = Option/none:
-    case Option/some:
+  match x = Option/None:
+    case Option/Some:
       y = x.value
-    case Option/none:
+    case Option/None:
       y = 0
 
 --------------------------------------------------------------------------------
@@ -482,18 +506,24 @@ def main():
         (arg
           (arg_bind
             (identifier)
-            (identifier)))
+            (identifier
+              (path)
+              (identifier))))
         (body
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (assignment_statement
                 (identifier)
                 (identifier))))
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (assignment_statement
                 (identifier)
@@ -531,17 +561,23 @@ def map(g, l):
         (body
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (return_statement
                 (list))))
           (match_case
             (match_pattern
-              (identifier))
+              (identifier
+                (path)
+                (identifier)))
             (body
               (return_statement
                 (call_expression
-                  (identifier)
+                  (identifier
+                    (path)
+                    (identifier))
                   (arguments
                     (call_expression
                       (identifier)
@@ -601,9 +637,7 @@ def main():
             (switch_pattern)
             (body
               (return_statement
-                (binary_op
-                  (identifier)
-                  (integer))))))))))
+                (identifier)))))))))
 
 ================================================================================
 Open Statement

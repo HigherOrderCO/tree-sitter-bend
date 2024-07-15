@@ -211,6 +211,8 @@ hvm Math/cos:
 
 (source_file
   (hvm_definition
-    (identifier)
+    (identifier
+      (path)
+      (identifier))
     (hvm_code)
     (hvm_code)))

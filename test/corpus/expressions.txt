@@ -271,6 +271,26 @@ def main():
           (unscoped_var))))))
 
 ================================================================================
+Path Test
+================================================================================
+
+def main():
+  return Module/Type/Ctr
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (imp_function_definition
+    (identifier)
+    (parameters)
+    (body
+      (return_statement
+        (identifier
+          (path)
+          (path)
+          (identifier))))))
+
+================================================================================
 Call Expression
 ================================================================================
 
@@ -326,11 +346,12 @@ def main():
                     (integer))))))))
       (return_statement
         (call_expression
-          (identifier)
+          (identifier
+            (path)
+            (identifier))
           (arguments
             (integer)
             (integer)))))))
-
 
 ================================================================================
 Eraser Expression
