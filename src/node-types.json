@@ -4188,6 +4188,32 @@
     "fields": {}
   },
   {
+    "type": "other_pattern",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "pattern",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parameters",
     "named": true,
     "fields": {},
@@ -4414,7 +4440,7 @@
           "named": true
         },
         {
-          "type": "pattern_constructor",
+          "type": "other_pattern",
           "named": true
         },
         {
@@ -4431,21 +4457,6 @@
         },
         {
           "type": "unscoped_var",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "pattern_constructor",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "identifier",
           "named": true
         }
       ]

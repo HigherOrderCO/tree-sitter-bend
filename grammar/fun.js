@@ -33,12 +33,12 @@ module.exports = {
     alias($._fun_eraser, $.eraser),
     $.unscoped_var,
     $.identifier,
-    $.pattern_constructor,
+    $.other_pattern,
   ),
 
-  pattern_constructor: $ => seq(
+  other_pattern: $ => seq(
     '(',
-    repeat($.identifier),
+    $._function_pattern,
     ')'
   ),
 

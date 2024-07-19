@@ -2610,11 +2610,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "pattern_constructor"
+          "name": "other_pattern"
         }
       ]
     },
-    "pattern_constructor": {
+    "other_pattern": {
       "type": "SEQ",
       "members": [
         {
@@ -2622,11 +2622,8 @@
           "value": "("
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
+          "type": "SYMBOL",
+          "name": "_function_pattern"
         },
         {
           "type": "STRING",

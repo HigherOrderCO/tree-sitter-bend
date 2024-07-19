@@ -107,9 +107,10 @@ MapMaybe (Some val) f = True
   (fun_function_definition
     name: (identifier)
     (pattern
-      (pattern_constructor
-        (identifier)
-        (identifier)))
+      (other_pattern
+        name: (identifier)
+        (pattern
+          (identifier))))
     (pattern
       (identifier))
     (body

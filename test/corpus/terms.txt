@@ -1003,13 +1003,15 @@ main =
             (fun_function_definition
               (identifier)
               (pattern
-                (pattern_constructor
+                (other_pattern
                   (identifier
                     (path)
                     (path)
                     (identifier))
-                  (identifier)
-                  (identifier)))
+                  (pattern
+                    (identifier))
+                  (pattern
+                    (identifier))))
               (body
                 (num_operator
                   (operator)
@@ -1024,3 +1026,237 @@ main =
                   (integer)
                   (integer)
                   (integer))))))))))
+
+================================================================================
+Pattern Test 1
+================================================================================
+
+f x y = 0
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (identifier))
+    (pattern
+      (identifier))
+    (body
+      (integer))))
+
+
+================================================================================
+Pattern Test 2
+================================================================================
+
+(f (O (O x))) = 0
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (other_pattern
+        (identifier)
+        (pattern
+          (other_pattern
+            (identifier)
+            (pattern
+              (identifier))))))
+    (body
+      (integer))))
+
+================================================================================
+Pattern Test 3
+================================================================================
+
+(Parse (Bits/O (Bits/O bs))) =
+  (Maybe/bind (Parse bs) λp(Pair/get p λbsλbod
+  (Maybe/Some (Pair/New bs (Term/Lam bod)))))
+(Parse (Bits/O (Bits/I bs))) =
+  (Maybe/bind (Parse bs) λp(Pair/get p λbsλfun
+  (Maybe/bind (Parse bs) λp(Pair/get p λbsλarg
+  (Maybe/Some (Pair/New bs (Term/App fun arg)))))))
+(Parse (Bits/O Bits/E))  = Maybe/None
+(Parse (Bits/I bs)) = (ParseVar (Bits/I bs) 0)
+(Parse Bits/E)      = Maybe/None
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (other_pattern
+        (identifier
+          (path)
+          (identifier))
+        (pattern
+          (other_pattern
+            (identifier
+              (path)
+              (identifier))
+            (pattern
+              (identifier))))))
+    (body
+      (fun_application
+        (identifier
+          (path)
+          (identifier))
+        (fun_application
+          (identifier)
+          (identifier))
+        (fun_lambda
+          (pattern
+            (identifier))
+          (body
+            (fun_application
+              (identifier
+                (path)
+                (identifier))
+              (identifier)
+              (fun_lambda
+                (pattern
+                  (identifier))
+                (body
+                  (fun_lambda
+                    (pattern
+                      (identifier))
+                    (body
+                      (fun_application
+                        (identifier
+                          (path)
+                          (identifier))
+                        (fun_application
+                          (identifier
+                            (path)
+                            (identifier))
+                          (identifier)
+                          (fun_application
+                            (identifier
+                              (path)
+                              (identifier))
+                            (identifier))))))))))))))
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (other_pattern
+        (identifier
+          (path)
+          (identifier))
+        (pattern
+          (other_pattern
+            (identifier
+              (path)
+              (identifier))
+            (pattern
+              (identifier))))))
+    (body
+      (fun_application
+        (identifier
+          (path)
+          (identifier))
+        (fun_application
+          (identifier)
+          (identifier))
+        (fun_lambda
+          (pattern
+            (identifier))
+          (body
+            (fun_application
+              (identifier
+                (path)
+                (identifier))
+              (identifier)
+              (fun_lambda
+                (pattern
+                  (identifier))
+                (body
+                  (fun_lambda
+                    (pattern
+                      (identifier))
+                    (body
+                      (fun_application
+                        (identifier
+                          (path)
+                          (identifier))
+                        (fun_application
+                          (identifier)
+                          (identifier))
+                        (fun_lambda
+                          (pattern
+                            (identifier))
+                          (body
+                            (fun_application
+                              (identifier
+                                (path)
+                                (identifier))
+                              (identifier)
+                              (fun_lambda
+                                (pattern
+                                  (identifier))
+                                (body
+                                  (fun_lambda
+                                    (pattern
+                                      (identifier))
+                                    (body
+                                      (fun_application
+                                        (identifier
+                                          (path)
+                                          (identifier))
+                                        (fun_application
+                                          (identifier
+                                            (path)
+                                            (identifier))
+                                          (identifier)
+                                          (fun_application
+                                            (identifier
+                                              (path)
+                                              (identifier))
+                                            (identifier)
+                                            (identifier))))))))))))))))))))))
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (other_pattern
+        (identifier
+          (path)
+          (identifier))
+        (pattern
+          (identifier
+            (path)
+            (identifier)))))
+    (body
+      (identifier
+        (path)
+        (identifier))))
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (other_pattern
+        (identifier
+          (path)
+          (identifier))
+        (pattern
+          (identifier))))
+    (body
+      (fun_application
+        (identifier)
+        (fun_application
+          (identifier
+            (path)
+            (identifier))
+          (identifier))
+        (integer))))
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (identifier
+        (path)
+        (identifier)))
+    (body
+      (identifier
+        (path)
+        (identifier)))))
