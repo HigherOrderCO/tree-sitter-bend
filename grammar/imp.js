@@ -430,7 +430,9 @@ module.exports = {
       choice(
         '==',
         '<',
+        '>=',
         '>',
+        '<=',
         '!=',
       ),
       $.simple_expression

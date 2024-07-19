@@ -1260,3 +1260,39 @@ Pattern Test 3
       (identifier
         (path)
         (identifier)))))
+
+================================================================================
+Anonymous Function With Underscore
+================================================================================
+
+(DoParse/go (Maybe/Some p)) = (Pair/get p λ_ λtm tm)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier
+      (path)
+      (identifier))
+    (pattern
+      (other_pattern
+        (identifier
+          (path)
+          (identifier))
+        (pattern
+          (identifier))))
+    (body
+      (fun_application
+        (identifier
+          (path)
+          (identifier))
+        (identifier)
+        (fun_lambda
+          (pattern
+            (identifier))
+          (body
+            (fun_lambda
+              (pattern
+                (identifier))
+              (body
+                (identifier)))))))))

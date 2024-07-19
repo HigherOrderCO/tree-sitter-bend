@@ -33,6 +33,7 @@ module.exports = {
     alias($._fun_eraser, $.eraser),
     $.unscoped_var,
     $.identifier,
+    alias('_', $.identifier),
     $.other_pattern,
   ),
 
@@ -373,6 +374,8 @@ module.exports = {
     '==',
     '<',
     '>',
+    '>=',
+    '<=',
     '!=',
   ),
 
