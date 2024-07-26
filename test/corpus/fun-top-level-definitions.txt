@@ -217,3 +217,26 @@ hvm Math/cos:
       (identifier))
     (hvm_code)
     (hvm_code)))
+
+================================================================================
+Comments
+================================================================================
+
+type T = N
+# comment
+T/f = 0
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_type_definition
+    (identifier)
+    (fun_type_constructor
+      (identifier)))
+  (comment)
+  (fun_function_definition
+    (identifier
+      (path)
+      (identifier))
+    (body
+      (integer))))

@@ -2664,36 +2664,12 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_indent"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
           "type": "STRING",
           "value": "="
         },
         {
           "type": "SYMBOL",
           "name": "_fun_type_body"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_dedent"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
         }
       ]
     },

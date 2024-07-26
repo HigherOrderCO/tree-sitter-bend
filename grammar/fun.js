@@ -49,10 +49,8 @@ module.exports = {
   fun_type_definition: $ => seq(
     'type',
     field('name', $.identifier),
-    optional($._indent),
     '=',
     $._fun_type_body,
-    optional($._dedent),
   ),
 
   _fun_type_body: $ => sep1(choice(
