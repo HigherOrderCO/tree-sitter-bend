@@ -388,7 +388,7 @@ module.exports = {
   ),
 
   _imp_arg_bind: $ => seq(
-    field('field', $.identifier),
+    field('field', choice($.identifier, '_')),
     '=',
     field('value', $.expression)
   ),
@@ -419,6 +419,7 @@ module.exports = {
     ))));
   },
 
+  // This shouldn't be needed anymore
   unary_op: $ => prec(PREC.unary, seq(
     choice('-', '+'),
     $.simple_expression,

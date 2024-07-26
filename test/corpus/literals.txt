@@ -3,12 +3,12 @@ Integers
 ================================================================================
 
 def main():
-    return 42
-    return 0xDEAD
-    return 0XBeaf
-    return 0b001
-    return 0B001
-    return 1_1
+  return 42
+  return 0xDEAD
+  return 0XBeaf
+  return 0b001
+  return 0B001
+  return 1_1
 
 --------------------------------------------------------------------------------
 
@@ -36,8 +36,8 @@ Float
 ================================================================================
 
 def main():
-    return 0.1
-    return 3.14
+  return 0.1
+  return 3.14
 
 --------------------------------------------------------------------------------
 
@@ -51,17 +51,134 @@ def main():
       (return_statement
         (float)))))
 
+================================================================================
+Hexadecimal and binary float
+================================================================================
+
+main = (0xA.1B, 0b1.1)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (tuple
+        (float)
+        (float)))))
+
+================================================================================
+Big float test
+================================================================================
+
+# Sleeps for a given amount of seconds as a float.
+def IO/sleep(seconds):
+  nanos = seconds * 1_000_000_000.0
+  lo = to_u24(nanos % 0x1_000_000.0)
+  hi = to_u24(nanos / 0x1_000_000.0)
+  return IO/nanosleep((hi, lo))
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (imp_function_definition
+    (identifier
+      (path)
+      (identifier))
+    (parameters
+      (identifier))
+    (body
+      (assignment_statement
+        (identifier)
+        (binary_op
+          (identifier)
+          (float)))
+      (assignment_statement
+        (identifier)
+        (call_expression
+          (identifier)
+          (arguments
+            (binary_op
+              (identifier)
+              (float)))))
+      (assignment_statement
+        (identifier)
+        (call_expression
+          (identifier)
+          (arguments
+            (binary_op
+              (identifier)
+              (float)))))
+      (return_statement
+        (call_expression
+          (identifier
+            (path)
+            (identifier))
+          (arguments
+            (tuple
+              (identifier)
+              (identifier))))))))
+
+================================================================================
+Positive and negative numbers
+================================================================================
+
+P1 = +0
+P2 = +1
+P3 = +22
+P4 = +0b1
+N1 = -0
+N2 = -1
+N3 = -22
+N4 = -0x1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer)))
+  (fun_function_definition
+    (identifier)
+    (body
+      (integer))))
 
 ================================================================================
 String
 ================================================================================
 
 def main():
-    return "hello World!"
-    return "🌏🌏🌏"
-    return "𝓐𝓫𝓬"
-    return "𐌀𐌁𐌂"
-    return "日本語"
+  return "hello World!"
+  return "🌏🌏🌏"
+  return "𝓐𝓫𝓬"
+  return "𐌀𐌁𐌂"
+  return "日本語"
 
 --------------------------------------------------------------------------------
 
@@ -87,10 +204,10 @@ Character
 ================================================================================
 
 def main():
-    return 'x'
-    return '日'
-    return '\u{65e5}'
-    return '🌏'
+  return 'x'
+  return '日'
+  return '\u{65e5}'
+  return '🌏'
 
 --------------------------------------------------------------------------------
 
@@ -113,13 +230,13 @@ Symbol
 ================================================================================
 
 def main():
-    return ``
-    return `A`
-    return `AB`
-    return `ABC`
-    return `ABCD`
-    return `A+CD`
-    return `/ACZ`
+  return ``
+  return `A`
+  return `AB`
+  return `ABC`
+  return `ABCD`
+  return `A+CD`
+  return `/ACZ`
 
 --------------------------------------------------------------------------------
 
@@ -144,14 +261,14 @@ def main():
         (symbol)))))
 
 ================================================================================
-List
+List 1
 ================================================================================
 
 def main():
-    return []
-    return [42, a,]
-    return [42, foo, ['a', 'b']]
-    return [1, 3.14, "string", '💀', `AAAA`]
+  return []
+  return [42, a,]
+  return [42, foo, ['a', 'b']]
+  return [1, 3.14, "string", '💀', `AAAA`]
 
 --------------------------------------------------------------------------------
 
@@ -180,6 +297,42 @@ def main():
           (string)
           (character)
           (symbol))))))
+
+================================================================================
+List 2
+================================================================================
+
+show (C/App f x) = (String/join ["(" (show f) " " (show x) ")"])
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (fun_function_definition
+    (identifier)
+    (pattern
+      (other_pattern
+        (identifier
+          (path)
+          (identifier))
+        (pattern
+          (identifier))
+        (pattern
+          (identifier))))
+    (body
+      (fun_application
+        (identifier
+          (path)
+          (identifier))
+        (list
+          (string)
+          (fun_application
+            (identifier)
+            (identifier))
+          (string)
+          (fun_application
+            (identifier)
+            (identifier))
+          (string))))))
 
 ================================================================================
 Imp Tree 1
@@ -321,8 +474,8 @@ Map
 ================================================================================
 
 def main():
-    return {}
-    return { 0: 4, `hi`: "bye", }
+  return {}
+  return { 0: 4, `hi`: "bye", }
 
 --------------------------------------------------------------------------------
 
@@ -345,8 +498,8 @@ Tuple
 ================================================================================
 
 def main():
-    return (1, "string", 2.0)
-    return (1, (1,2))
+  return (1, "string", 2.0)
+  return (1, (1,2))
 
 --------------------------------------------------------------------------------
 
@@ -372,8 +525,8 @@ Superposition
 ================================================================================
 
 def main():
-    return {1 2 3}
-    return {1, 2, 3,}
+  return {1 2 3}
+  return {1, 2, 3,}
 
 --------------------------------------------------------------------------------
 

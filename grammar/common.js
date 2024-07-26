@@ -55,26 +55,26 @@ module.exports = {
     $.symbol,
   ),
 
-  symbol: _ => token(seq('`', /[a-zA-Z0-9+/]{0,4}/ ,'`')),
+  symbol: _ => token(seq('`', /[a-zA-Z0-9+/]{0,4}/, '`')),
   character: _ => token(seq('\'', /[^']+/, '\'')),
   string: _ => token(seq('"', repeat(/[^"]/), '"')),
 
   integer: _ => token(choice(
-    seq(
-      choice('0x', '0X'),
-      repeat1(/_?[A-Fa-f0-9]+/),
-    ),
-    seq(
-      choice('0b', '0B'),
-      repeat1(/_?[0-1]+/),
-    ),
-    seq(
-      repeat1(/[0-9]+_?/),
-    ),
+    // decimal
+    /[+-]?([0-9]+_?)+/,
+    // hexadecimal
+    /[+-]?(0x|0X)([A-Fa-f0-9]+_?)+/,
+    // binary
+    /[+-]?(0b|0B)([0-1]+_?)+/,
   )),
 
-  float: _ => {
-    const digits = repeat1(/[0-9]+_?/);
-    return token(seq(digits, '.', digits));
-  },
+  float: _ =>
+    token(choice(
+      // decimal
+      /[+-]?([0-9]+_?)+\.([0-9]+_?)+/,
+      // hexadecimal
+      /[+-]?(0x|0X)([A-Fa-f0-9]+_?)+\.([A-Fa-f0-9]+_?)+/,
+      // binary
+      /[+-]?(0b|0B)([0-1]+_?)+\.([0-1]+_?)+/
+    )),
 }

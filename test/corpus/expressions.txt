@@ -46,14 +46,11 @@ def main():
     (parameters)
     (body
       (return_statement
-        (unary_op
-          (integer)))
+        (integer))
       (return_statement
-        (unary_op
-          (integer)))
+        (integer))
       (return_statement
-        (unary_op
-          (float))))))
+        (float)))))
 
 ================================================================================
 Comparison Operators
@@ -88,8 +85,7 @@ def main():
       (return_statement
         (comparison_op
           (float)
-          (unary_op
-            (integer))))
+          (integer)))
       (return_statement
         (comparison_op
           (comparison_op

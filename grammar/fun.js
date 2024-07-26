@@ -136,7 +136,7 @@ module.exports = {
     field('variable', $.identifier),
     optional(SEMICOLON),
     alias($._terms, $.body)
-    ),
+  ),
 
   fun_bend: $ => seq(
     'bend',
@@ -269,7 +269,7 @@ module.exports = {
   ),
 
   _fun_arg_bind: $ => seq(
-    field('field', $.identifier),
+    field('field', choice($.identifier, '_')),
     '=',
     field('value', $._terms)
   ),
@@ -285,8 +285,10 @@ module.exports = {
 
   _fun_list: $ => seq(
     '[',
-    optional(commaSep1($._terms)),
-    optional(','),
+    repeat(seq(
+      $._terms,
+      optional(',')
+    )),
     ']'
   ),
 
@@ -362,19 +364,21 @@ module.exports = {
   operator: $ => choice(
     '+',
     '-',
+    '**',
     '*',
     '/',
     '%',
-    '**',
-    '|',
-    '&',
-    '^',
-    '==',
+    '<<',
+    '>>',
+    '<=',
+    '>=',
     '<',
     '>',
-    '>=',
-    '<=',
+    '==',
     '!=',
+    '&',
+    '|',
+    '^',    
   ),
 
   num_operator: $ => seq(
