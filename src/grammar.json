@@ -4444,10 +4444,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_newline"
-        },
-        {
-          "type": "SYMBOL",
           "name": "_indent"
         },
         {

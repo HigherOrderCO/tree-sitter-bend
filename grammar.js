@@ -90,7 +90,7 @@ module.exports = grammar({
       'hvm',
       field('name', $.identifier),
       ':',
-      $._newline,
+      // $._newline,
       $._indent,
       // TODO: multiple lines of `hvm_code` should be the same expression
       repeat1(field('code', $.hvm_code)),
