@@ -1,12 +1,12 @@
 [package]
 name = "tree-sitter-bend"
-description = "Bend grammar for tree-sitter"
-version = "0.2.36"
+description = "Tree-sitter grammar for the Bend programming language"
+version = "0.2.37-alpha.1"
 license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "bend"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-bend"
+repository = "https://github.com/HigherOrderCO/tree-sitter-bend"
 edition = "2021"
 autoexamples = false
 
@@ -20,4 +20,4 @@ path = "bindings/rust/lib.rs"
 tree-sitter = ">=0.22.6"
 
 [build-dependencies]
-cc = "1.0.87"
+cc = "1.1.13"
