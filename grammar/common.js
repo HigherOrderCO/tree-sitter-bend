@@ -24,7 +24,8 @@ module.exports = {
     field('name', $._id)
   )),
 
-  comment: _ => token(prec(PREC.comment, seq('#', /.*/))),
+  // comment: _ => token(prec(PREC.comment, seq('#', /.*/))),
+  comment: _ => token(seq('#', /(\\+(.|\r?\n)|[^\\\n])*/)),
 
   os_path: _ => /[A-Za-z0-9.-\/]+/,
 

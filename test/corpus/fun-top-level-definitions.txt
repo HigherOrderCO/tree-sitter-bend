@@ -240,3 +240,56 @@ T/f = 0
       (identifier))
     (body
       (integer))))
+
+================================================================================
+Comments 2
+================================================================================
+
+# To do the opposite and create a recursive structure, you can use 'bend'.
+# .'bend' can be seen as a tree-like generalization of a while loop.
+new_list = bend x = 0 {
+  when (< x 10):
+    #
+    # 'fork' calls the bend recursively with the provided values.
+    (List/Cons x (fork (+ x 1)))
+  else:
+    List/Nil
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (fun_function_definition
+    (identifier)
+    (body
+      (fun_bend
+        (args
+          (arg_bind
+            (identifier)
+            (integer)))
+        (when_clause
+          (num_operator
+            (operator)
+            (identifier)
+            (integer))
+          (comment)
+          (comment)
+          (body
+            (fun_application
+              (identifier
+                (path)
+                (identifier))
+              (identifier)
+              (fun_application
+                (identifier)
+                (num_operator
+                  (operator)
+                  (identifier)
+                  (integer))))))
+        (else_clause
+          (body
+            (identifier
+              (path)
+              (identifier))))))))

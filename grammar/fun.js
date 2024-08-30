@@ -88,7 +88,6 @@ module.exports = {
     $.identifier,
     $.unscoped_var,
     $.use,
-    $.nat,
     $.let_bind,
     $.fun_application,
     $.fun_lambda,
@@ -102,8 +101,6 @@ module.exports = {
     $.fun_with,
     $.fun_local_def
   ),
-
-  nat: $ => seq('#', $.integer),
 
   fun_with: $ => seq(
     'with',
@@ -145,14 +142,6 @@ module.exports = {
     alias($._fun_bend_when, $.when_clause),
     alias($._fun_bend_else, $.else_clause),
     '}'
-  ),
-
-  _fun_bend_bind: $ => seq(
-    $.identifier,
-    optional(seq(
-      '=',
-      $._terms,
-    ))
   ),
 
   _fun_bend_when: $ => seq(
