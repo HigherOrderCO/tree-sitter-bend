@@ -8,31 +8,22 @@ and both this changelog and the crate's versioning scheme follow what the
 
 ## [Unreleased]
 
-All current features are yet unreleased on a stable version, and are only available in the `0.2.37` alpha versions.
+All current features are yet unreleased on a stable version, and are only available in the `0.2.37` alpha versions. Only the latest alpha version will be shown in this changelog, with all the pre-release features included in it.
 
-## [0.2.37-alpha.2] - 2024-08-30
+## [0.2.37-alpha.3] - 2024-08-30
+
+### Added
+
+- Multiline comments
+- All implemented syntax features of Bend as of the release date.
 
 ### Fixed
 
-- Comments sometimes would register as erros
-
-### Added
-
-- Semantic token highlighting through tree-sitter
-- Diagnostic reporting
-
-## [0.2.37-alpha.1] - 2024-08-23
-
-First release!
-
-### Added
-
-- Semantic token highlighting through tree-sitter
-- Diagnostic reporting
+- Comments sometimes would register as errors
 
 <!-- still haven't added a release to GitHub -->
-[0.2.37-alpha.1]: https://github.com/HigherOrderCO/bend-language-server/
-[Unreleased]: https://github.com/HigherOrderCO/bend-language-server/
+[0.2.37-alpha.4]: https://github.com/HigherOrderCO/tree-sitter-bend/
+[Unreleased]: https://github.com/HigherOrderCO/tree-sitter-bend/
 
 # Collaborators
 
