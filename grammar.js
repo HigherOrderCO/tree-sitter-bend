@@ -99,6 +99,7 @@ module.exports = grammar({
   },
 
   extras: $ => [
+    $.multiline_comment,
     $.comment,
     /[\s\f\uFEFF\u2060\u200B]|\r?\n/,
   ],

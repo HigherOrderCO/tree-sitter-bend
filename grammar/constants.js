@@ -4,7 +4,6 @@
 module.exports = {
   // Defines the precedence of a few operators.
   PREC: {
-    comment: -1, // solves conflict with the NAT term
     parenthesized_expression: 1,
     comparison: 13,
     bitwise_or: 14,
@@ -15,6 +14,8 @@ module.exports = {
     unary: 20,
     power: 21,
     call: 22,
+    comment: 100,
+    multiline_comment: 101,
   },
 
   SEMICOLON: ';'

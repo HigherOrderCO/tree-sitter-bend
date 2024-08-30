@@ -81,20 +81,48 @@
         ]
       }
     },
+    "multiline_comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 101,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#{"
+            },
+            {
+              "type": "PATTERN",
+              "value": "([^#]|\\#[^}])*"
+            },
+            {
+              "type": "STRING",
+              "value": "#}"
+            }
+          ]
+        }
+      }
+    },
     "comment": {
       "type": "TOKEN",
       "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "#"
-          },
-          {
-            "type": "PATTERN",
-            "value": "(\\\\+(.|\\r?\\n)|[^\\\\\\n])*"
-          }
-        ]
+        "type": "PREC",
+        "value": 100,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "(\\\\+(.|\\r?\\n)|[^\\\\\\n])*"
+            }
+          ]
+        }
       }
     },
     "os_path": {
@@ -4414,6 +4442,10 @@
     }
   },
   "extras": [
+    {
+      "type": "SYMBOL",
+      "name": "multiline_comment"
+    },
     {
       "type": "SYMBOL",
       "name": "comment"
