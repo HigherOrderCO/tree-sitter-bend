@@ -1,4 +1,4 @@
-VERSION := 0.2.37-alpha.3
+VERSION := 0.2.37
 
 LANGUAGE_NAME := tree-sitter-bend
 

@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-bend",
-  "version": "0.2.37-alpha.3",
+  "version": "0.2.37",
   "main": "bindings/node",
   "types": "bindings/node",
   "author": "HigherOrderCO",
